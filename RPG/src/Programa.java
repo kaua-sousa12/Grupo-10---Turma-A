@@ -1,8 +1,6 @@
 public class Programa {
     public static void main(String[] args) {
-
         RPG jogo = new RPG();
-
-        jogo.menu("=== SYSTEM32: O CAVALEIRO DO CÓDIGO ===");
+        jogo.menu("Cavaleiro do codigo");
     }
 }
