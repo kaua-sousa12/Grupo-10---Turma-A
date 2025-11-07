@@ -273,25 +273,24 @@ public class RPG {
             String resposta = sc.next().toUpperCase();
 
             switch (resposta) {
-                case "VERDADE", "VERDADE REVELADA" -> {
+                case "VERDADE", "VERDADE REVELADA":
                     System.out.println("\nVocê descobre segredos ocultos em System32...");
                     conhecimento += 4;
-                }
-                case "ENGANO", "ENGANO DETECTADO" -> {
+                    break;
+                case "ENGANO", "ENGANO DETECTADO":
                     int dano = (int) (Math.random() * 4) + 2;
                     vida -= dano;
                     System.out.println("\nErro lógico! Você perde " + dano + " de vida!");
                     conhecimento += 1;
-                }
-                default -> {
-                    int dano = (int) (Math.random() * 5) + 3;
+                    break;
+                default:
+                    dano = (int) (Math.random() * 5) + 3;
                     vida -= dano;
                     System.out.println("\nFalha crítica no sistema! -" + dano + " de vida!");
                     if (vida <= 0) {
                         System.out.println("*** GAME OVER ***");
                         return;
                     }
-                }
             }
         } else {
             int dano = (int) (Math.random() * 3) + 1;
