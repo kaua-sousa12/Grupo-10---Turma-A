@@ -2,8 +2,8 @@ import java.util.Scanner;
 
 public class RPG {
     Scanner sc = new Scanner(System.in);
-    int conhecimento = 0;//Conhecimento Base do Jogador
-    int vida = 10;//Vida Base do Jogador
+    int conhecimento = 0;
+    int vida = 10;
 
     // Função de pausa personalizada
     private void pausar(long ms) {
@@ -29,15 +29,22 @@ public class RPG {
             opcao = sc.nextInt();
 
             switch (opcao) {
-                case 1 -> instrucoes();
-                case 2 -> {
+                case 1:
+                    instrucoes();
+                    break;
+                case 2:
                     conhecimento = 0;
                     vida = 10;
                     jogar();
-                }
-                case 3 -> creditos();
-                case 4 -> sair();
-                default -> System.out.println("Opção inválida. Tente novamente.");
+                    break;
+                case 3:
+                    creditos();
+                    break;
+                case 4:
+                    sair();
+                    break;
+                default:
+                    System.out.println("Opção inválida. Tente novamente.");
             }
         } while (opcao != 4);
     }
@@ -115,40 +122,55 @@ public class RPG {
         System.out.println("\nEles mostram uma placa com o seguinte código:");
         pausar(1000);
         System.out.println("""
-                if (condicao1) {
-                   // faz algo
-                } else if (condicao2) {
-                    // faz outra coisa
-                } else {
-                    // ???? 
-                }""");
+            if (condicao1) {
+               // faz algo
+            } else if (condicao2) {
+                // faz outra coisa
+            } else {
+                // ???? 
+            }""");
         pausar(1500);
 
         System.out.println("\nE perguntam:");
         System.out.println("“Se as condições 'condicao1' e 'condicao2' forem FALSAS, o que será executado?”");
+        pausar(1000);
         System.out.println("\n1 - Nada será executado.");
         System.out.println("2 - O bloco dentro do 'else' será executado.");
         System.out.println("3 - O programa entra em loop infinito.");
-        System.out.print("Escolha: ");
-        int resposta = sc.nextInt();
 
-        if (resposta == 2) {
-            System.out.println("\nOs capangas se surpreendem!");
-            pausar(1000);
-            System.out.println("“Correto! O bloco 'else' é executado quando todas as condições anteriores são falsas!”");
-            pausar(1500);
-            System.out.println("Você derrotou os capangas com lógica pura! +3 de conhecimento!");
-            conhecimento += 3;
-        } else {
-            System.out.println("\nOs capangas riem alto: “ERRADO!”");
-            pausar(1000);
-            System.out.println("O chão se parte, revelando uma armadilha cheia de exceções fatais!");
-            pausar(1500);
-            System.out.println("Você cai e é consumido pelo temido ‘NullPointerException’...");
-            pausar(1500);
-            System.out.println("\n*** GAME OVER ***");
-            vida = 0;
-            return;
+        boolean acertou = false;
+        while (!acertou && vida > 0) {
+            System.out.print("\nEscolha: ");
+            int resposta = sc.nextInt();
+
+            if (resposta == 2) {
+                System.out.println("\nOs capangas se surpreendem!");
+                pausar(1000);
+                System.out.println("“Correto! O bloco 'else' é executado quando todas as condições anteriores são falsas!”");
+                pausar(1500);
+                System.out.println("Você derrotou os capangas com lógica pura! +3 de conhecimento!");
+                conhecimento += 3;
+                acertou = true;
+            } else {
+                System.out.println("\nOs capangas riem alto: “ERRADO!”");
+                pausar(1000);
+                System.out.println("O chão se parte, revelando uma armadilha cheia de exceções fatais!");
+                pausar(1500);
+
+                int dano = (int) (Math.random() * 3) + 1; // dano entre 1 e 3
+                vida -= dano;
+                System.out.println("Você sofreu " + dano + " de dano! Vida atual: " + vida);
+                pausar(1000);
+
+                if (vida <= 0) {
+                    System.out.println("\nVocê foi consumido pelo temido ‘NullPointerException’...");
+                    pausar(1500);
+                    System.out.println("\n*** GAME OVER ***");
+                    return;
+                }
+
+                System.out.println("\nOs capangas ainda te encaram, esperando uma nova resposta...");
+            }
         }
 
         mostrarStatus();
@@ -251,25 +273,24 @@ public class RPG {
             String resposta = sc.next().toUpperCase();
 
             switch (resposta) {
-                case "VERDADE", "VERDADE REVELADA" -> {
+                case "VERDADE", "VERDADE REVELADA":
                     System.out.println("\nVocê descobre segredos ocultos em System32...");
                     conhecimento += 4;
-                }
-                case "ENGANO", "ENGANO DETECTADO" -> {
+                    break;
+                case "ENGANO", "ENGANO DETECTADO":
                     int dano = (int) (Math.random() * 4) + 2;
                     vida -= dano;
                     System.out.println("\nErro lógico! Você perde " + dano + " de vida!");
                     conhecimento += 1;
-                }
-                default -> {
-                    int dano = (int) (Math.random() * 5) + 3;
+                    break;
+                default:
+                    dano = (int) (Math.random() * 5) + 3;
                     vida -= dano;
                     System.out.println("\nFalha crítica no sistema! -" + dano + " de vida!");
                     if (vida <= 0) {
                         System.out.println("*** GAME OVER ***");
                         return;
                     }
-                }
             }
         } else {
             int dano = (int) (Math.random() * 3) + 1;
@@ -326,35 +347,46 @@ public class RPG {
         System.out.println("Rodada 1 – Condições Aninhadas");
         pausar(500);
         System.out.println("""
-            int vida = 10;
-            int defesa = 5;
-            
-            if (vida > 0)
-                if (defesa > 10)
-                    System.out.println("Protegido!");
-            else
-                System.out.println("Inconsciente!");
-            """);
+        int vida = 10;
+        int defesa = 5;
+        
+        if (vida > 0)
+            if (defesa > 10)
+                System.out.println("Protegido!");
+        else
+            System.out.println("Inconsciente!");
+        """);
         pausar(1000);
         System.out.println("Pergunta: O que será impresso?");
         System.out.println("a) Protegido!");
         System.out.println("b) Inconsciente!");
         System.out.println("c) Nada será impresso.");
-        System.out.print("➡ Sua resposta: ");
-        resposta = sc.nextLine();
 
-        if (resposta.equalsIgnoreCase("c")) {
-            System.out.println("Correto! O 'else' pertence ao segundo if e não será executado.");
-            vitorias++;
-        } else {
-            int dano = (int) (Math.random() * 3) + 1;
-            System.out.println("Errado! A indentação engana, mas o else não cobre o primeiro if.");
-            System.out.println("Você sofreu " + dano + " de dano!");
-            derrotas++;
-        }
-        if (derrotas == 2) {
-            System.out.println("\nA cópia sobrecarrega o sistema e você é desconectado...");
-            return;
+        boolean acertou1 = false;
+        while (!acertou1 && vida > 0) {
+            System.out.print("➡ Sua resposta: ");
+            resposta = sc.nextLine();
+
+            if (resposta.equalsIgnoreCase("c")) {
+                System.out.println("Correto! O 'else' pertence ao segundo if e não será executado.");
+                vitorias++;
+                acertou1 = true;
+            } else {
+                int dano = (int) (Math.random() * 3) + 1;
+                vida -= dano;
+                derrotas++;
+                System.out.println("Errado! A indentação engana, mas o else não cobre o primeiro if.");
+                System.out.println("Você sofreu " + dano + " de dano! Vida atual: " + vida);
+
+                if (vida <= 0) {
+                    System.out.println("\nVocê foi derrotado pela cópia... GAME OVER!");
+                    return;
+                }
+                if (derrotas == 2) {
+                    System.out.println("\nA cópia sobrecarrega o sistema e você é desconectado...");
+                    return;
+                }
+            }
         }
 
         pausar(1500);
@@ -363,34 +395,45 @@ public class RPG {
         System.out.println("\n⚡ Rodada 2 – Mistura de condições");
         pausar(500);
         System.out.println("""
-            int energia = 5;
-            int modoFuria = 3;
-            
-            if (energia > 4 || modoFuria > 5)
-                System.out.println("Ataque liberado!");
-            else
-                System.out.println("Energia insuficiente!");
-            """);
+        int energia = 5;
+        int modoFuria = 3;
+        
+        if (energia > 4 || modoFuria > 5)
+            System.out.println("Ataque liberado!");
+        else
+            System.out.println("Energia insuficiente!");
+        """);
         pausar(1000);
         System.out.println("Pergunta: O que será impresso?");
         System.out.println("a) Ataque liberado!");
         System.out.println("b) Energia insuficiente!");
         System.out.println("c) Nenhuma mensagem.");
-        System.out.print("➡ Sua resposta: ");
-        resposta = sc.nextLine();
 
-        if (resposta.equalsIgnoreCase("a")) {
-            System.out.println("Correto! O operador || torna a condição verdadeira com energia > 4.");
-            vitorias++;
-        } else {
-            int dano = (int) (Math.random() * 3) + 1;
-            System.out.println("Errado! Apenas uma condição já bastava.");
-            System.out.println("Você sofreu " + dano + " de dano!");
-            derrotas++;
-        }
-        if (derrotas == 2) {
-            System.out.println("\nA cópia sobrecarrega o sistema e você é desconectado...");
-            return;
+        boolean acertou2 = false;
+        while (!acertou2 && vida > 0) {
+            System.out.print("➡ Sua resposta: ");
+            resposta = sc.nextLine();
+
+            if (resposta.equalsIgnoreCase("a")) {
+                System.out.println("Correto! O operador || torna a condição verdadeira com energia > 4.");
+                vitorias++;
+                acertou2 = true;
+            } else {
+                int dano = (int) (Math.random() * 3) + 1;
+                vida -= dano;
+                derrotas++;
+                System.out.println("Errado! Apenas uma condição já bastava.");
+                System.out.println("Você sofreu " + dano + " de dano! Vida atual: " + vida);
+
+                if (vida <= 0) {
+                    System.out.println("\nVocê foi derrotado pela cópia... GAME OVER!");
+                    return;
+                }
+                if (derrotas == 2) {
+                    System.out.println("\nA cópia sobrecarrega o sistema e você é desconectado...");
+                    return;
+                }
+            }
         }
 
         pausar(1500);
@@ -399,31 +442,46 @@ public class RPG {
         System.out.println("\n Rodada Final – Decisão Múltipla");
         pausar(500);
         System.out.println("""
-            int codigo = 42;
-            
-            if (codigo < 20)
-                System.out.println("Código Fraco");
-            else if (codigo < 40)
-                System.out.println("Código Regular");
-            else
-                System.out.println("Código Forte");
-            """);
+        int codigo = 42;
+        
+        if (codigo < 20)
+            System.out.println("Código Fraco");
+        else if (codigo < 40)
+            System.out.println("Código Regular");
+        else
+            System.out.println("Código Forte");
+        """);
         pausar(1000);
         System.out.println("Pergunta: O que será impresso?");
         System.out.println("a) Código Fraco");
         System.out.println("b) Código Regular");
         System.out.println("c) Código Forte");
-        System.out.print("➡ Sua resposta: ");
-        resposta = sc.nextLine();
 
-        if (resposta.equalsIgnoreCase("c")) {
-            System.out.println("Correto! O 'else' final é executado pois nenhuma condição anterior é verdadeira.");
-            vitorias++;
-        } else {
-            int dano = (int) (Math.random() * 3) + 1;
-            System.out.println("Errado! 42 não é menor que 40.");
-            System.out.println("Você sofreu " + dano + " de dano!");
-            derrotas++;
+        boolean acertou3 = false;
+        while (!acertou3 && vida > 0) {
+            System.out.print("➡ Sua resposta: ");
+            resposta = sc.nextLine();
+
+            if (resposta.equalsIgnoreCase("c")) {
+                System.out.println("Correto! O 'else' final é executado pois nenhuma condição anterior é verdadeira.");
+                vitorias++;
+                acertou3 = true;
+            } else {
+                int dano = (int) (Math.random() * 3) + 1;
+                vida -= dano;
+                derrotas++;
+                System.out.println("Errado! 42 não é menor que 40.");
+                System.out.println("Você sofreu " + dano + " de dano! Vida atual: " + vida);
+
+                if (vida <= 0) {
+                    System.out.println("\nVocê foi derrotado pela cópia... GAME OVER!");
+                    return;
+                }
+                if (derrotas == 2) {
+                    System.out.println("\nA cópia sobrecarrega o sistema e você é desconectado...");
+                    return;
+                }
+            }
         }
 
         // RESULTADO FINAL
@@ -435,9 +493,11 @@ public class RPG {
         if (vitorias >= 2) {
             System.out.println("\nVocê superou a cópia! O fragmento de código é restaurado.");
             System.out.println("Cortanix: \"Excelente... agora podemos acessar a próxima camada do sistema.\"");
+            conhecimento += 5;
         } else {
-            System.out.println("\n A cópia te venceu. O setor permanece corrompido...");
+            System.out.println("\nA cópia te venceu. O setor permanece corrompido...");
             System.out.println("Cortanix: \"Não... perdemos a conexão com o Source_Origin.sys.\"");
+            vida = 0;
         }
     }
 
