@@ -449,4 +449,64 @@ public class RPG {
         System.out.println("Conhecimento: " + conhecimento);
         pausar(1000);
     }
-}
+    // ==================== CAPÍTULO 5 ====================
+    private void capitulo5() {
+        System.out.println("\n=== CAPÍTULO 5 – O LOOP ESQUECIDO ===");
+        pausar(1200);
+        System.out.println("Você entra em um túnel que se repete infinitamente...");
+        pausar(1500);
+        System.out.println("Uma voz diz: \"Este é um loop sem condição de parada.\"");
+        pausar(1500);
+
+        System.out.println("\nO que você faz?");
+        System.out.println("1 - Procurar o ponto que quebra o loop.");
+        System.out.println("2 - Observar a repetição e tentar entender seu sentido.");
+        System.out.print("Escolha: ");
+        int escolha = sc.nextInt();
+        pausar(1000);
+
+        switch (escolha) {
+            case 1 -> {
+                System.out.println("\nVocê decide procurar o ponto que quebra o loop...");
+                pausar(1500);
+                System.out.println("Um padrão se repete nas paredes do túnel, como se fossem linhas de código:");
+                pausar(1200);
+
+                String[] padrao = {"--->", "--->", "--->", "--X>", "--->", "--->"};
+                for (int i = 0; i < padrao.length; i++) {
+                    System.out.println((i + 1) + ": " + padrao[i]);
+                    pausar(400);
+                }
+
+                System.out.print("\nDigite o número da linha que parece diferente: ");
+                int linha = sc.nextInt();
+
+                if (linha == 4) {
+                    System.out.println("\nVocê identifica a linha que muda! O loop se desfaz e uma passagem se abre.");
+                    conhecimento += 3;
+                } else {
+                    System.out.println("\nA linha escolhida não era o ponto de quebra...");
+                    pausar(1200);
+                    System.out.println("O túnel reinicia, mas você tenta novamente e encontra a linha com o 'X'.");
+                    pausar(1200);
+                    System.out.println("O loop se desfaz e você segue adiante.");
+                    conhecimento += 2;
+                }
+            }
+            case 2 -> {
+                System.out.println("\nVocê para e observa a repetição, tentando entender seu sentido...");
+                pausar(1500);
+                System.out.println("Depois de algum tempo, o ciclo se encerra sozinho e uma porta se abre à sua frente.");
+                conhecimento += 2;
+            }
+            default -> {
+                System.out.println("\nVocê hesita e o túnel se reinicia infinitamente...");
+                pausar(1500);
+                System.out.println("Você decide tentar novamente e finalmente encontra a saída.");
+                conhecimento += 1;
+            }
+        }
+
+        mostrarStatus();
+        }
+    }
