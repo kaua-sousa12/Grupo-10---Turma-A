@@ -104,6 +104,13 @@ public class RPG {
 
         if (vida <= 0) return;
         capitulo4();
+
+        capitulo5();
+        if (vida <= 0) return;
+
+        capitulo6();
+        if (vida <= 0) return;
+
     }
 
     // ==================== CAPÍTULO 1 ====================
@@ -303,7 +310,6 @@ public class RPG {
 
     // ==================== CAPÍTULO 4 ====================
     private void capitulo4() {
-        Scanner sc = new Scanner(System.in);
         int vitorias = 0;
         int derrotas = 0;
         String resposta;
@@ -569,4 +575,60 @@ public class RPG {
 
         mostrarStatus();
         }
+
+    // ==================== CAPÍTULO 6 ====================
+    private void capitulo6() {
+        System.out.println("\n=== CAPÍTULO 6 – O PACOTE CORROMPIDO ===");
+        pausar(1200);
+        System.out.println("Um alerta surge na tela: \"Pacote desconhecido detectado: Bug_Residual.exe\".");
+        pausar(1500);
+        System.out.println("O que você faz?");
+        System.out.println("1 - Abrir o pacote.");
+        System.out.println("2 - Deletar o pacote sem abrir.");
+        System.out.print("Escolha: ");
+        int escolha = sc.nextInt();
+        pausar(1000);
+
+        switch (escolha) {
+            case 1 -> {
+                System.out.println("\nVocê abre o pacote com cautela...");
+                pausar(1500);
+                System.out.println("Dentro, encontra uma IA chamada Glitch.");
+                pausar(1200);
+                System.out.println("Glitch: \"Vejo que você veio corrigir falhas. Aqui vão três dicas rápidas para estabilizar o sistema:\"");
+                pausar(2000);
+                System.out.println(" - Verifique referências nulas antes de usá-las.");
+                pausar(1200);
+                System.out.println(" - Isole processos suspeitos em sandboxes temporários.");
+                pausar(1200);
+                System.out.println(" - Registre eventos antes e depois de operações críticas para poder reverter mudanças.");
+                pausar(1500);
+                System.out.println("Com essas dicas, o sistema começa a recuperar integridade.");
+                pausar(1500);
+                System.out.println("Glitch oferece acompanhamento opcional para futuras missões...");
+                conhecimento += 4;
+            }
+            case 2 -> {
+                System.out.println("\nVocê deleta o pacote imediatamente.");
+                pausar(1500);
+                System.out.println("O sistema emite uma mensagem de agradecimento por remover a ameaça.");
+                pausar(1200);
+                System.out.println("Enquanto caminha, sente que perdeu uma ajuda valiosa que poderia ter prevenido problemas adiante...");
+                conhecimento += 1;
+            }
+            default -> {
+                System.out.println("\nVocê hesita e o pacote se executa sozinho!");
+                pausar(1500);
+                int dano = (int) (Math.random() * 3) + 2;
+                vida -= dano;
+                System.out.println("Glitch tenta corromper o sistema, mas você consegue conter parte do dano. -" + dano + " de vida!");
+                if (vida <= 0) {
+                    System.out.println("\nO Bug_Residual tomou conta do sistema... GAME OVER!");
+                    return;
+                }
+            }
+        }
+
+        mostrarStatus();
     }
+}
