@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class RPG {
@@ -126,36 +128,119 @@ public class RPG {
         System.out.println("“Se quer passar, responda corretamente, pequeno dev! Vamos ver se entende de lógica!”");
         pausar(1500);
 
+        // Lista de perguntas sobre if/else
+        ArrayList<String[]> perguntas = new ArrayList<>();
+
+        perguntas.add(new String[]{
+                """
+        if (condicao1) {
+           // faz algo
+        } else if (condicao2) {
+            // faz outra coisa
+        } else {
+            // ????
+        }
+        """,
+                "Se as condições 'condicao1' e 'condicao2' forem FALSAS, o que será executado?",
+                "1 - Nada será executado.",
+                "2 - O bloco dentro do 'else' será executado.",
+                "3 - O programa entra em loop infinito.",
+                "2"
+        });
+
+        perguntas.add(new String[]{
+                """
+        int x = 5;
+        if (x > 10) {
+            System.out.println("Maior que 10");
+        } else {
+            System.out.println("Menor ou igual a 10");
+        }
+        """,
+                "O que será impresso na tela?",
+                "1 - Maior que 10",
+                "2 - Menor ou igual a 10",
+                "3 - Nenhum dos dois",
+                "2"
+        });
+
+        perguntas.add(new String[]{
+                """
+        int idade = 18;
+        if (idade < 18) {
+            System.out.println("Menor de idade");
+        } else {
+            System.out.println("Maior de idade");
+        }
+        """,
+                "Qual será a saída do programa?",
+                "1 - Menor de idade",
+                "2 - Maior de idade",
+                "3 - Nenhuma mensagem",
+                "2"
+        });
+
+        perguntas.add(new String[]{
+                """
+        boolean teste = false;
+        if (teste) {
+            System.out.println("Verdadeiro");
+        } else {
+            System.out.println("Falso");
+        }
+        """,
+                "O que será impresso?",
+                "1 - Verdadeiro",
+                "2 - Falso",
+                "3 - Erro de compilação",
+                "2"
+        });
+
+        perguntas.add(new String[]{
+                """
+        int a = 5;
+        int b = 5;
+        if (a == b) {
+            System.out.println("Iguais");
+        } else {
+            System.out.println("Diferentes");
+        }
+        """,
+                "O que o código imprime?",
+                "1 - Iguais",
+                "2 - Diferentes",
+                "3 - Nenhuma das opções",
+                "1"
+        });
+
+        // Sorteia uma pergunta
+        Random random = new Random();
+        String[] questao = perguntas.get(random.nextInt(perguntas.size()));
+
+        // Mostra a questão sorteada
         System.out.println("\nEles mostram uma placa com o seguinte código:");
         pausar(1000);
-        System.out.println("""
-            if (condicao1) {
-               // faz algo
-            } else if (condicao2) {
-                // faz outra coisa
-            } else {
-                // ???? 
-            }""");
+        System.out.println(questao[0]);
         pausar(1500);
 
         System.out.println("\nE perguntam:");
-        System.out.println("“Se as condições 'condicao1' e 'condicao2' forem FALSAS, o que será executado?”");
+        System.out.println(questao[1]);
         pausar(1000);
-        System.out.println("\n1 - Nada será executado.");
-        System.out.println("2 - O bloco dentro do 'else' será executado.");
-        System.out.println("3 - O programa entra em loop infinito.");
+        System.out.println("\n" + questao[2]);
+        System.out.println(questao[3]);
+        System.out.println(questao[4]);
 
         boolean acertou = false;
         while (!acertou && vida > 0) {
             System.out.print("\nEscolha: ");
             int resposta = sc.nextInt();
 
-            if (resposta == 2) {
+            if (String.valueOf(resposta).equals(questao[5])) {
                 System.out.println("\nOs capangas se surpreendem!");
                 pausar(1000);
-                System.out.println("“Correto! O bloco 'else' é executado quando todas as condições anteriores são falsas!”");
+                System.out.println("“Correto! Sua lógica é afiada, jovem dev!”");
                 pausar(1500);
-                System.out.println("Você derrotou os capangas com lógica pura! +3 de conhecimento!");
+                System.out.println("Você derrotou os capangas com sabedoria! +3 de conhecimento!");
                 conhecimento += 3;
                 acertou = true;
             } else {
@@ -164,7 +249,7 @@ public class RPG {
                 System.out.println("O chão se parte, revelando uma armadilha cheia de exceções fatais!");
                 pausar(1500);
 
-                int dano = (int) (Math.random() * 3) + 1; // dano entre 1 e 3
+                int dano = (int) (Math.random() * 3) + 1;
                 vida -= dano;
                 System.out.println("Você sofreu " + dano + " de dano! Vida atual: " + vida);
                 pausar(1000);
