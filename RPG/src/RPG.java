@@ -71,23 +71,14 @@ public class RPG {
 
     // ==================== JOGAR ====================
     public void jogar() {
-        System.out.println("\n--------------------------------------");
-        pausar(1000);
-        System.out.println("Você acorda em meio a um clarão azul...");
-        pausar(2500);
-        System.out.println("Sua visão ainda está embaralhada, o chão parece feito de circuitos...");
-        pausar(2500);
-        System.out.println("E o céu pulsa como uma tela de computador.");
-        pausar(2000);
-
-        System.out.println("\nUma voz ecoa:");
-        pausar(1000);
-        System.out.println("“Bem-vindo, jovem programador, você foi transportado para o Reino de System32.”");
-        pausar(2000);
-        System.out.println("“Aqui, o caos reina desde que o Rei dos Bugs corrompeu o código-mestre.”");
-        pausar(2000);
-        System.out.println("A voz se identifica como Cortanix, a guardiã do sistema...");
-        pausar(2000);
+        printPause("\n--------------------------------------", 1500);
+        printPause("Você acorda em meio a um clarão azul...", 2500);
+        printPause("Sua visão ainda está embaralhada, o chão parece feito de circuitos...", 2500);
+        printPause("E o céu pulsa como uma tela de computador.", 2000);
+        printPause("\nUma voz ecoa:", 1500);
+        printPause("“Bem-vindo, jovem programador, você foi transportado para o Reino de System32.”", 2000);
+        printPause("“Aqui, o caos reina desde que o Rei dos Bugs corrompeu o código-mestre.”", 2000);
+        printPause("A voz se identifica como Cortanix, a guardiã do sistema...", 2000);
 
         System.out.println("\n--- STATUS INICIAL ---");
         System.out.println("Vida: " + vida);
@@ -137,18 +128,19 @@ public class RPG {
         }
     }
 
+    // Método que imprime e pausa automaticamente
+    private void printPause(String texto, long ms) {
+        System.out.println(texto);
+        pausar(ms);
+    }
+
     // ==================== CAPÍTULO 1 ====================
     private void capitulo1() {
-        System.out.println("\n=== CAPÍTULO 1 – A ARMADILHA LÓGICA ===");
-        pausar(2000);
-        System.out.println("Você entra na Floresta Binária, onde os dados flutuam no ar...");
-        pausar(2500);
-        System.out.println("De repente, três CAPANGAS do Reino dos Bugs surgem e bloqueiam seu caminho!");
-        pausar(2500);
-        System.out.println("\nO líder deles ri:");
-        pausar(2000);
-        System.out.println("“Se quer passar, responda corretamente, pequeno dev! Vamos ver se entende de lógica!”");
-        pausar(2500);
+        printPause("\n=== CAPÍTULO 1 – A ARMADILHA LÓGICA ===", 2000);
+        printPause("Você entra na Floresta Binária, onde os dados flutuam no ar...", 2500);
+        printPause("De repente, três CAPANGAS do Reino dos Bugs surgem e bloqueiam seu caminho!", 2500);
+        printPause("\nO líder deles ri:", 2000);
+        printPause("“Se quer passar, responda corretamente, pequeno dev! Vamos ver se entende de lógica!”", 2500);
 
         ArrayList<String[]> perguntas = new ArrayList<>();
 
@@ -204,14 +196,11 @@ if (teste) {
         Random random = new Random();
         String[] questao = perguntas.get(random.nextInt(perguntas.size()));
 
-        System.out.println("\nOs capangas mostram uma placa com o seguinte código:");
-        pausar(1500);
-        System.out.println(questao[0]);
-        pausar(2000);
+        printPause("\nOs capangas mostram uma placa com o seguinte código:", 2000);
+        printPause(questao[0], 2000);
 
         System.out.println("\nE perguntam:");
-        System.out.println(questao[1]);
-        pausar(1000);
+        printPause(questao[1], 2500);
         System.out.println("\n" + questao[2]);
         System.out.println(questao[3]);
         System.out.println(questao[4]);
@@ -222,27 +211,21 @@ if (teste) {
             int resposta = sc.nextInt();
 
             if (String.valueOf(resposta).equals(questao[5])) {
-                System.out.println("\nOs capangas se surpreendem!");
-                pausar(1200);
-                System.out.println("“Correto! Sua lógica é afiada, jovem dev!”");
-                pausar(1800);
-                System.out.println("Você derrotou os capangas com sabedoria! +3 de conhecimento!");
+                printPause("\nOs capangas se surpreendem!", 2000);
+                printPause("“Correto! Sua lógica é afiada, jovem dev!”", 2000);
+                printPause("Você derrotou os capangas com sabedoria! +3 de conhecimento!", 2000);
                 conhecimento += 3;
                 acertou = true;
             } else {
-                System.out.println("\nOs capangas riem alto: “ERRADO!”");
-                pausar(1200);
-                System.out.println("O chão se parte, revelando uma armadilha cheia de exceções fatais!");
-                pausar(1800);
+                printPause("\nOs capangas riem alto: “ERRADO!”", 2000);
+                printPause("O chão se parte, revelando uma armadilha cheia de exceções fatais!", 2000);
 
                 int dano = (int) (Math.random() * 3) + 1;
                 vida -= dano;
-                System.out.println("Você sofreu " + dano + " de dano! Vida atual: " + vida);
-                pausar(1200);
+                printPause("Você sofreu " + dano + " de dano! Vida atual: " + vida, 2000);
 
                 if (vida <= 0) {
-                    System.out.println("\nVocê foi consumido pelo temido ‘NullPointerException’...");
-                    pausar(2000);
+                    printPause("\nVocê foi consumido pelo temido ‘NullPointerException’...", 2000);
                     System.out.println("\n*** GAME OVER ***");
                     return;
                 }
@@ -297,8 +280,7 @@ if (teste) {
                     break;
             }
         } else {
-            System.out.println("\nVocê decide deixar o baú para trás. A sabedoria nem sempre está em abrir tudo...");
-            pausar(1500);
+            printPause("\nVocê decide deixar o baú para trás. A sabedoria nem sempre está em abrir tudo...", 2000);
         }
 
         mostrarStatus();
@@ -309,19 +291,14 @@ if (teste) {
         sc.nextLine();
     }
 
-
     // ==================== CAPÍTULO 2 ====================
     private void capitulo2() {
-        System.out.println("\n=== CAPÍTULO 2 – O DESAFIO LÓGICO DOS PORTAIS ===");
-        pausar(2000);
-        System.out.println("Após atravessar as ruínas do Templo Switch, você encontra uma parede de código enigmática...");
-        pausar(2500);
+        printPause("\n=== CAPÍTULO 2 – O DESAFIO LÓGICO DOS PORTAIS ===", 2000);
+        printPause("Após atravessar as ruínas do Templo Switch, você encontra uma parede de código enigmática...", 2500);
         System.out.println("Nela, uma voz digital ecoa:");
-        System.out.println("\"Apenas quem entende a lógica poderá escolher o portal certo.\"");
-        pausar(2500);
+        printPause("\"Apenas quem entende a lógica poderá escolher o portal certo.\"", 2500);
 
-        System.out.println("\nAparece a pergunta na tela:");
-        pausar(1500);
+        printPause("\nAparece a pergunta na tela:", 1500);
         System.out.println("Se uma variável 'x' vale 10 e 'y' vale 5, o que o seguinte código imprime?");
         System.out.println("\nif (x > y && y * 2 == x)");
         System.out.println("    System.out.println(\"A\");");
@@ -334,14 +311,12 @@ if (teste) {
 
         switch (resposta) {
             case "A":
-                System.out.println("\nO portal da Luz se abre diante de você!");
-                pausar(1500);
+                printPause("\nO portal da Luz se abre diante de você!", 1500);
                 System.out.println("Um robô chamado Byte surge e se junta a você, oferecendo dicas em batalha!");
                 conhecimento += 3;
                 break;
             case "B":
-                System.out.println("\nSua resposta ativa o portal da Sombra...");
-                pausar(2000);
+                printPause("\nSua resposta ativa o portal da Sombra...", 2000);
                 System.out.println("Você sente um poder sombrio fluir, mas o código ao redor começa a se distorcer!");
                 int dano = (int) (Math.random() * 3) + 1;
                 vida -= dano;
@@ -349,16 +324,13 @@ if (teste) {
                 System.out.println("Você ganhou +2 de conhecimento, mas perdeu " + dano + " de vida!");
                 break;
             case "C":
-                System.out.println("\nO portal do Eco ressoa com sua resposta...");
-                pausar(2000);
+                printPause("\nO portal do Eco ressoa com sua resposta...", 2000);
                 System.out.println("Um som distante revela um atalho secreto para o castelo do Rei dos Bugs!");
                 conhecimento += 4;
                 break;
             default:
-                System.out.println("\nO portal vibra violentamente!");
-                pausar(1500);
-                System.out.println("O chão se abre e o sistema entra em colapso!");
-                pausar(2000);
+                printPause("\nO portal vibra violentamente!", 1500);
+                printPause("O chão se abre e o sistema entra em colapso!", 2000);
                 System.out.println("Você é lançado de volta ao início do jogo com uma mensagem piscando:");
                 System.out.println("\"Nem todo caminho é seguro quando o caso é errado.\"");
                 vida = 0;
@@ -390,13 +362,10 @@ if (teste) {
 
     // ==================== CAPÍTULO 3 ====================
     private void capitulo3() {
-        System.out.println("\n=== CAPÍTULO 3 – O CÓDIGO PERDIDO ===");
-        pausar(2000);
+        printPause("\n=== CAPÍTULO 3 – O CÓDIGO PERDIDO ===", 2000);
         System.out.println("Você acessa o terminal antigo e vê uma mensagem piscando:");
         System.out.println("\"Arquivo perdido: Source_Origin.sys.\"");
-        pausar(2000);
-        System.out.println("Um fragmento de código aparece — resolveu-se em enigmas. Resolva para recuperar pedaços do arquivo.");
-        pausar(2000);
+        printPause("Um fragmento de código aparece — resolveu-se em enigmas. Resolva para recuperar pedaços do arquivo.", 2000);
 
         ArrayList<Pergunta> perguntas = new ArrayList<>();
 
@@ -460,10 +429,9 @@ if (teste) {
         Random rnd = new Random();
         Pergunta q = perguntas.get(rnd.nextInt(perguntas.size()));
 
-        System.out.println("\nO terminal exibe o seguinte código:");
-        pausar(1200);
+        printPause("\nO terminal exibe o seguinte código:", 1200);
         System.out.println(q.codigo);
-        pausar(1500);
+        printPause("", 1500);
 
         System.out.println("\nPergunta: " + q.enunciado);
         for (String alt : q.alternativas) System.out.println(alt);
@@ -484,8 +452,7 @@ if (teste) {
             }
 
             if (resposta.equals(q.correta)) {
-                System.out.println("\nO código se recompila com sucesso! Você recupera fragmentos do arquivo.");
-                pausar(1400);
+                printPause("\nO código se recompila com sucesso! Você recupera fragmentos do arquivo.", 1400);
                 conhecimento += 4;
                 acertou = true;
             } else {
@@ -494,7 +461,7 @@ if (teste) {
                 vida -= dano;
                 System.out.println("\nResposta incorreta. O terminal faz curto e você é ferido pela sobrecarga.");
                 System.out.println("Você sofreu " + dano + " de dano. Vida atual: " + vida);
-                pausar(1200);
+                printPause("", 1200);
 
                 if (vida <= 0) {
                     System.out.println("\nO sistema entra em colapso... *** GAME OVER ***");
@@ -520,12 +487,9 @@ if (teste) {
 
     // ==================== CAPÍTULO 4 ====================
     private void capitulo4() {
-        System.out.println("\n=== CAPÍTULO 4 – A CÓPIA CORROMPIDA ===");
-        pausar(2000);
-        System.out.println("No Setor de Memória Profunda, você encara uma cópia defeituosa de si mesmo...");
-        pausar(2000);
-        System.out.println("A cópia propõe uma disputa de lógica: melhor de três. Apenas o dev com raciocínio impecável vencerá.");
-        pausar(2000);
+        printPause("\n=== CAPÍTULO 4 – A CÓPIA CORROMPIDA ===", 2000);
+        printPause("No Setor de Memória Profunda, você encara uma cópia defeituosa de si mesmo...", 2000);
+        printPause("A cópia propõe uma disputa de lógica: melhor de três. Apenas o dev com raciocínio impecável vencerá.", 2000);
 
         ArrayList<Pergunta> perguntas = new ArrayList<>();
 
@@ -640,11 +604,9 @@ if (teste) {
             Pergunta q = selecionadas.get(i);
 
             System.out.println("\n--- Rodada " + (i + 1) + " ---");
-            pausar(1200);
-            System.out.println("A cópia te desafia com o seguinte código:");
-            pausar(1200);
+            printPause("A cópia te desafia com o seguinte código:", 1200);
             System.out.println(q.codigo);
-            pausar(1500);
+            printPause("", 1500);
 
             System.out.println("\nPergunta: " + q.enunciado);
             for (String alt : q.alternativas) System.out.println(alt);
@@ -705,12 +667,9 @@ if (teste) {
 
     // ==================== CAPÍTULO 5 ====================
     private void capitulo5() {
-        System.out.println("\n=== CAPÍTULO 5 – O LOOP ESQUECIDO ===");
-        pausar(1200);
-        System.out.println("Você entra em um túnel que se repete infinitamente...");
-        pausar(1500);
-        System.out.println("Uma voz diz: \"Este é um loop sem condição de parada.\"");
-        pausar(1500);
+        printPause("\n=== CAPÍTULO 5 – O LOOP ESQUECIDO ===", 1200);
+        printPause("Você entra em um túnel que se repete infinitamente...", 1500);
+        printPause("Uma voz diz: \"Este é um loop sem condição de parada.\"", 1500);
 
         System.out.println("\nO que você faz?");
         System.out.println("1 - Procurar o ponto que quebra o loop.");
@@ -721,10 +680,8 @@ if (teste) {
 
         switch (escolha) {
             case 1 -> {
-                System.out.println("\nVocê decide procurar o ponto que quebra o loop...");
-                pausar(1500);
-                System.out.println("Um padrão se repete nas paredes do túnel, como se fossem linhas de código:");
-                pausar(1200);
+                printPause("\nVocê decide procurar o ponto que quebra o loop...", 1500);
+                printPause("Um padrão se repete nas paredes do túnel, como se fossem linhas de código:", 1200);
 
                 String[] padrao = {"--->", "--->", "--->", "--X>", "--->", "--->"};
                 for (int i = 0; i < padrao.length; i++) {
@@ -739,24 +696,20 @@ if (teste) {
                     System.out.println("\nVocê identifica a linha que muda! O loop se desfaz e uma passagem se abre.");
                     conhecimento += 3;
                 } else {
-                    System.out.println("\nA linha escolhida não era o ponto de quebra...");
-                    pausar(1200);
-                    System.out.println("O túnel reinicia, mas você tenta novamente e encontra a linha com o 'X'.");
-                    pausar(1200);
-                    System.out.println("O loop se desfaz e você segue adiante.");
+                    printPause("\nA linha escolhida não era o ponto de quebra...", 1200);
+                    printPause("O túnel reinicia, mas você tenta novamente e encontra a linha com o 'X'.", 1200);
+                    printPause("O loop se desfaz e você segue adiante.", 1200);
                     conhecimento += 2;
                 }
             }
             case 2 -> {
-                System.out.println("\nVocê para e observa a repetição, tentando entender seu sentido...");
-                pausar(1500);
-                System.out.println("Depois de algum tempo, o ciclo se encerra sozinho e uma porta se abre à sua frente.");
+                printPause("\nVocê para e observa a repetição, tentando entender seu sentido...", 1500);
+                printPause("Depois de algum tempo, o ciclo se encerra sozinho e uma porta se abre à sua frente.", 1200);
                 conhecimento += 2;
             }
             default -> {
-                System.out.println("\nVocê hesita e o túnel se reinicia infinitamente...");
-                pausar(1500);
-                System.out.println("Você decide tentar novamente e finalmente encontra a saída.");
+                printPause("\nVocê hesita e o túnel se reinicia infinitamente...", 1500);
+                printPause("Você decide tentar novamente e finalmente encontra a saída.", 1200);
                 conhecimento += 1;
             }
         }
@@ -766,10 +719,8 @@ if (teste) {
 
     // ==================== CAPÍTULO 6 ====================
     private void capitulo6() {
-        System.out.println("\n=== CAPÍTULO 6 – O PACOTE CORROMPIDO ===");
-        pausar(1200);
-        System.out.println("Um alerta surge na tela: \"Pacote desconhecido detectado: Bug_Residual.exe\".");
-        pausar(1500);
+        printPause("\n=== CAPÍTULO 6 – O PACOTE CORROMPIDO ===", 1200);
+        printPause("Um alerta surge na tela: \"Pacote desconhecido detectado: Bug_Residual.exe\".", 1500);
         System.out.println("O que você faz?");
         System.out.println("1 - Abrir o pacote.");
         System.out.println("2 - Deletar o pacote sem abrir.");
@@ -779,34 +730,24 @@ if (teste) {
 
         switch (escolha) {
             case 1 -> {
-                System.out.println("\nVocê abre o pacote com cautela...");
-                pausar(1500);
-                System.out.println("Dentro, encontra uma IA chamada Glitch.");
-                pausar(1200);
-                System.out.println("Glitch: \"Vejo que você veio corrigir falhas. Aqui vão três dicas rápidas para estabilizar o sistema:\"");
-                pausar(2000);
-                System.out.println(" - Verifique referências nulas antes de usá-las.");
-                pausar(1200);
-                System.out.println(" - Isole processos suspeitos em sandboxes temporários.");
-                pausar(1200);
-                System.out.println(" - Registre eventos antes e depois de operações críticas para poder reverter mudanças.");
-                pausar(1500);
-                System.out.println("Com essas dicas, o sistema começa a recuperar integridade.");
-                pausar(1500);
-                System.out.println("Glitch oferece acompanhamento opcional para futuras missões...");
+                printPause("\nVocê abre o pacote com cautela...", 1500);
+                printPause("Dentro, encontra uma IA chamada Glitch.", 1200);
+                printPause("Glitch: \"Vejo que você veio corrigir falhas. Aqui vão três dicas rápidas para estabilizar o sistema:\"", 2000);
+                printPause(" - Verifique referências nulas antes de usá-las.", 1200);
+                printPause(" - Isole processos suspeitos em sandboxes temporários.", 1200);
+                printPause(" - Registre eventos antes e depois de operações críticas para poder reverter mudanças.", 1500);
+                printPause("Com essas dicas, o sistema começa a recuperar integridade.", 1500);
+                printPause("Glitch oferece acompanhamento opcional para futuras missões...", 1500);
                 conhecimento += 4;
             }
             case 2 -> {
-                System.out.println("\nVocê deleta o pacote imediatamente.");
-                pausar(1500);
-                System.out.println("O sistema emite uma mensagem de agradecimento por remover a ameaça.");
-                pausar(1200);
-                System.out.println("Enquanto caminha, sente que perdeu uma ajuda valiosa que poderia ter prevenido problemas adiante...");
+                printPause("\nVocê deleta o pacote imediatamente.", 1500);
+                printPause("O sistema emite uma mensagem de agradecimento por remover a ameaça.", 1200);
+                printPause("Enquanto caminha, sente que perdeu uma ajuda valiosa que poderia ter prevenido problemas adiante...", 1200);
                 conhecimento += 1;
             }
             default -> {
-                System.out.println("\nVocê hesita e o pacote se executa sozinho!");
-                pausar(1500);
+                printPause("\nVocê hesita e o pacote se executa sozinho!", 1500);
                 int dano = (int) (Math.random() * 3) + 2;
                 vida -= dano;
                 System.out.println("Glitch tenta corromper o sistema, mas você consegue conter parte do dano. -" + dano + " de vida!");
