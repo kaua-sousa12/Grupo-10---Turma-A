@@ -102,6 +102,8 @@ public class RPG {
         capitulo6();
         if (vida <= 0) return;
 
+        capitulo7();
+        if(vida <= 0) return;
     }
 
     private void verificarVida() {
@@ -1101,5 +1103,183 @@ if (!ativo) {
         }
         verificarVida();
         mostrarStatus();
+    }
+
+    // ==================== CAPÍTULO 7 ====================
+    private void capitulo7() {
+        printPause("\n=== CAPÍTULO 7 – O FIREWALL DA VERDADE ===", 2000);
+        printPause("Após longas jornadas, você chega a um enorme muro de energia pura.", 2000);
+        printPause("Linhas de código flutuam, formando barreiras vivas de segurança…", 2200);
+        printPause("No centro, uma inscrição pulsa:", 2000);
+        printPause("“O que é um erro: o bug ou quem o criou?”", 2500);
+
+        // ----------- PRIMEIRA ONDA DE PERGUNTAS -----------
+        ArrayList<String[]> perguntas = new ArrayList<>();
+
+        perguntas.add(new String[]{
+                """
+int x = 0;
+while (x < 3) {
+    x++;
+}
+System.out.println(x);
+""",
+                "O que será impresso?",
+                "1 - 0", "2 - 1", "3 - 3",
+                "3"
+        });
+
+        perguntas.add(new String[]{
+                """
+int n = 5;
+if (n == 5) {
+    System.out.println("A");
+} else {
+    System.out.println("B");
+}
+""",
+                "O que será exibido?",
+                "1 - A", "2 - B", "3 - Nada",
+                "1"
+        });
+
+        perguntas.add(new String[]{
+                """
+boolean ativo = true;
+if (ativo && false) {
+    System.out.println("X");
+} else {
+    System.out.println("Y");
+}
+""",
+                "O resultado será:",
+                "1 - X", "2 - Y", "3 - Erro",
+                "2"
+        });
+
+        Random random = new Random();
+        String[] questao = perguntas.get(random.nextInt(perguntas.size()));
+
+        printPause("\nO Firewall projeta uma linha de código em sua frente:", 2000);
+        printPause(questao[0], 2000);
+        printPause("Ele pergunta:", 2000);
+        printPause(questao[1], 2000);
+        System.out.println("\n" + questao[2]);
+        System.out.println(questao[3]);
+        System.out.println(questao[4]);
+
+        boolean acertou = false;
+        while (!acertou && vida > 0) {
+            System.out.print("\nEscolha: ");
+            int resposta = sc.nextInt();
+
+            if (String.valueOf(resposta).equals(questao[5])) {
+                printPause("\nO Firewall analisa sua resposta… e brilha suavemente.", 2000);
+                conhecimento += 3;
+                acertou = true;
+            } else {
+                printPause("\nO Firewall oscila e lança uma descarga!", 2000);
+                int dano = random.nextInt(3) + 1;
+                vida -= dano;
+                printPause("Você sofreu " + dano + " de dano! Vida atual: " + vida, 2000);
+                if (vida <= 0) {
+                    System.out.println("\n*** GAME OVER ***");
+                    return;
+                }
+            }
+        }
+
+        // ----------- SEGUNDA ONDA -----------
+        printPause("\nO Firewall se expande, testando sua determinação…", 2000);
+
+        ArrayList<String[]> perguntas2 = new ArrayList<>();
+
+        perguntas2.add(new String[]{
+                """
+for (int i = 0; i < 4; i++) {
+    System.out.println(i);
+}
+""",
+                "Quantas vezes o laço será executado?",
+                "1 - 3", "2 - 4", "3 - 5",
+                "2"
+        });
+
+        perguntas2.add(new String[]{
+                """
+int a = 10;
+if (a > 5 && a < 20) {
+    System.out.println("OK");
+}
+""",
+                "O que será exibido?",
+                "1 - OK", "2 - Nada", "3 - Erro",
+                "1"
+        });
+
+        perguntas2.add(new String[]{
+                """
+int c = 2;
+while (c < 5) {
+    c++;
+}
+System.out.println(c);
+""",
+                "O valor final de c será:",
+                "1 - 4", "2 - 5", "3 - 6",
+                "2"
+        });
+
+        String[] questao2 = perguntas2.get(random.nextInt(perguntas2.size()));
+
+        printPause("\nO Firewall lança outra linha de código:", 2000);
+        printPause(questao2[0], 2000);
+        printPause("Ele pergunta novamente:", 2000);
+        printPause(questao2[1], 2000);
+        System.out.println("\n" + questao2[2]);
+        System.out.println(questao2[3]);
+        System.out.println(questao2[4]);
+
+        boolean acertou2 = false;
+        while (!acertou2 && vida > 0) {
+            System.out.print("\nEscolha: ");
+            int resposta = sc.nextInt();
+
+            if (String.valueOf(resposta).equals(questao2[5])) {
+                printPause("\nO Firewall se curva em luz… você passou.", 2000);
+                conhecimento += 4;
+                acertou2 = true;
+            } else {
+                printPause("\nO Firewall te fere com um pulso de sintaxe incorreta!", 2000);
+                int dano = random.nextInt(4) + 1;
+                vida -= dano;
+                printPause("Você sofreu " + dano + " de dano. Vida atual: " + vida, 2000);
+
+                if (vida <= 0) {
+                    System.out.println("\n*** GAME OVER ***");
+                    return;
+                }
+            }
+        }
+
+        // ESCOLHA FINAL DO CAPÍTULO
+        printPause("\nO Firewall exibe a pergunta final:", 2000);
+        printPause("“O que é um erro: o bug ou quem o criou?”", 2500);
+        System.out.println("\n1 - O bug");
+        System.out.println("2 - O criador");
+
+        System.out.print("\nSua resposta: ");
+        int escolha = sc.nextInt();
+
+        if (escolha == 1) {
+            printPause("\nO Firewall se abre lentamente… mas registra seu medo.", 2000);
+        } else {
+            printPause("\nO Firewall se abre em respeito à sua responsabilidade.", 2000);
+            conhecimento += 2;
+        }
+
+        mostrarStatus();
+        printPause("\n--- Fim do Capítulo 7 ---", 2000);
+        sc.nextLine(); sc.nextLine();
     }
 }
