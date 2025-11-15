@@ -104,6 +104,9 @@ public class RPG {
 
         capitulo7();
         if(vida <= 0) return;
+
+        capitulo8();
+        if(vida <= 0) return;
     }
 
     private void verificarVida() {
@@ -1280,6 +1283,184 @@ System.out.println(c);
 
         mostrarStatus();
         printPause("\n--- Fim do Capítulo 7 ---", 2000);
+        sc.nextLine(); sc.nextLine();
+    }
+
+    // ==================== CAPÍTULO 8 ====================
+    private void capitulo8() {
+        printPause("\n=== CAPÍTULO 8 – O SERVIDOR FANTASMA ===", 2000);
+        printPause("Você entra nos confins abandonados de System32…", 2200);
+        printPause("Processos mortos ecoam como sussurros ao vento.", 2000);
+        printPause("Então, um programa antigo desperta…", 2000);
+        printPause("Clippy.exe aparece flutuando no ar:", 2000);
+        printPause("“Você é o cavaleiro que pode restaurar o sistema.”", 2500);
+
+        // -------- PRIMEIRA ONDA --------
+        ArrayList<String[]> perguntas = new ArrayList<>();
+
+        perguntas.add(new String[]{
+                """
+int x = 1;
+while (x < 4) {
+    x += 2;
+}
+System.out.println(x);
+""",
+                "O valor final de x será:",
+                "1 - 3", "2 - 5", "3 - 4",
+                "2"
+        });
+
+        perguntas.add(new String[]{
+                """
+for (int i = 2; i <= 6; i += 2) {
+    System.out.println(i);
+}
+""",
+                "Quantas vezes o laço roda?",
+                "1 - 2", "2 - 3", "3 - 4",
+                "2"
+        });
+
+        perguntas.add(new String[]{
+                """
+boolean flag = false;
+if (!flag || true) {
+    System.out.println("A");
+} else {
+    System.out.println("B");
+}
+""",
+                "O que será impresso?",
+                "1 - A", "2 - B", "3 - Erro",
+                "1"
+        });
+
+        Random r = new Random();
+        String[] q = perguntas.get(r.nextInt(perguntas.size()));
+
+        printPause("\nClippy abre uma janela mostrando código:", 2000);
+        printPause(q[0], 2000);
+        printPause("Ele pergunta:", 2000);
+        printPause(q[1], 2000);
+        System.out.println("\n" + q[2]);
+        System.out.println(q[3]);
+        System.out.println(q[4]);
+
+        boolean ok = false;
+        while (!ok && vida > 0) {
+            System.out.print("\nEscolha: ");
+            int resposta = sc.nextInt();
+
+            if (String.valueOf(resposta).equals(q[5])) {
+                printPause("\nClippy sorri com orgulho de programa antigo…", 2000);
+                conhecimento += 3;
+                ok = true;
+            } else {
+                printPause("\nClippy te ataca com um grampeador fantasma!", 2000);
+                int dano = r.nextInt(3) + 1;
+                vida -= dano;
+                printPause("Você sofreu " + dano + " de dano.", 2000);
+                if (vida <= 0) {
+                    System.out.println("\n*** GAME OVER ***");
+                    return;
+                }
+            }
+        }
+
+        // -------- SEGUNDA ONDA --------
+        printPause("\nClippy gira e abre um diretório secreto…", 2000);
+
+        ArrayList<String[]> perguntas2 = new ArrayList<>();
+
+        perguntas2.add(new String[]{
+                """
+int c = 0;
+for (int i = 0; i < 3; i++) {
+    c += i;
+}
+System.out.println(c);
+""",
+                "Qual o valor final de c?",
+                "1 - 3", "2 - 6", "3 - 2",
+                "1"
+        });
+
+        perguntas2.add(new String[]{
+                """
+int z = 10;
+if (z > 5 && z < 15) {
+    System.out.println("OK");
+}
+""",
+                "O que será exibido?",
+                "1 - OK", "2 - Nada", "3 - Erro",
+                "1"
+        });
+
+        perguntas2.add(new String[]{
+                """
+int n = 5;
+while (n > 1) {
+    n--;
+}
+System.out.println(n);
+""",
+                "O valor impresso será:",
+                "1 - 1", "2 - 0", "3 - 2",
+                "1"
+        });
+
+        String[] q2 = perguntas2.get(r.nextInt(perguntas2.size()));
+
+        printPause("\nClippy exibe mais código corrompido:", 2000);
+        printPause(q2[0], 2000);
+        printPause(q2[1], 2000);
+        System.out.println("\n" + q2[2]);
+        System.out.println(q2[3]);
+        System.out.println(q2[4]);
+
+        boolean ok2 = false;
+        while (!ok2 && vida > 0) {
+            System.out.print("\nEscolha: ");
+            int resposta = sc.nextInt();
+
+            if (String.valueOf(resposta).equals(q2[5])) {
+                printPause("\nClippy acena satisfeito…", 2000);
+                conhecimento += 4;
+                ok2 = true;
+            } else {
+                printPause("\nO servidor fantasma vibra e causa instabilidade!", 2000);
+                int dano = r.nextInt(4) + 1;
+                vida -= dano;
+                printPause("Você sofreu " + dano + " de dano.", 2000);
+                if (vida <= 0) {
+                    System.out.println("\n*** GAME OVER ***");
+                    return;
+                }
+            }
+        }
+
+        // -------- ESCOLHA FINAL --------
+        printPause("\nClippy aponta dois caminhos:", 2000);
+        System.out.println("1 - Seguir Clippy e explorar o servidor.");
+        System.out.println("2 - Ignorar e seguir sozinho.");
+
+        System.out.print("\nEscolha: ");
+        int escolha = sc.nextInt();
+
+        if (escolha == 1) {
+            printPause("\nClippy sorri, talvez pela primeira vez em décadas.", 2000);
+            printPause("“Obrigado. O sistema precisa de você.”", 2000);
+            conhecimento += 2;
+        } else {
+            printPause("\nVocê segue sozinho nas sombras de System32…", 2000);
+            vida -= 1;
+            printPause("A solidão pesa. -1 de vida.", 2000);
+        }
+
+        mostrarStatus();
+        printPause("\n--- Fim do Capítulo 8 ---", 2000);
         sc.nextLine(); sc.nextLine();
     }
 }
