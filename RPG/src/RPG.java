@@ -234,6 +234,99 @@ if (teste) {
             }
         }
 
+        printPause("\nAssim que você pensa ter vencido...", 2000);
+        printPause("Mais DOIS capangas escondidos saltam dos arbustos!", 2500);
+        printPause("“Achou que era só aquilo? Agora vamos ver se você aguenta lógica de verdade!”", 2500);
+
+        ArrayList<String[]> perguntas2 = new ArrayList<>();
+
+        perguntas2.add(new String[]{
+                """
+int a = 10;
+int b = 20;
+if (a < b && b == 20) {
+    System.out.println("OK");
+} else {
+    System.out.println("FAIL");
+}
+""",
+                "O que será impresso?",
+                "1 - OK",
+                "2 - FAIL",
+                "3 - Erro de compilação",
+                "1"
+        });
+
+        perguntas2.add(new String[]{
+                """
+int valor = 7;
+if (valor % 2 == 0) {
+    System.out.println("Par");
+} else {
+    System.out.println("Ímpar");
+}
+""",
+                "O número 7 é:",
+                "1 - Par",
+                "2 - Ímpar",
+                "3 - Nenhum dos dois",
+                "2"
+        });
+
+        perguntas2.add(new String[]{
+                """
+boolean ativo = true;
+if (!ativo) {
+    System.out.println("Desativado");
+} else {
+    System.out.println("Ativado");
+}
+""",
+                "O que será impresso?",
+                "1 - Ativado",
+                "2 - Desativado",
+                "3 - Nada",
+                "1"
+        });
+
+        String[] questao2 = perguntas2.get(random.nextInt(perguntas2.size()));
+
+        printPause("\nOs novos capangas erguem outra placa de código:", 2000);
+        printPause(questao2[0], 2000);
+
+        System.out.println("\nE perguntam:");
+        printPause(questao2[1], 2500);
+        System.out.println("\n" + questao2[2]);
+        System.out.println(questao2[3]);
+        System.out.println(questao2[4]);
+
+        boolean acertou2 = false;
+        while (!acertou2 && vida > 0) {
+            System.out.print("\nEscolha: ");
+            int resposta = sc.nextInt();
+
+            if (String.valueOf(resposta).equals(questao2[5])) {
+                printPause("\nO capanga recua assustado!", 2000);
+                printPause("“NÃÃÃO! Ele entende lógica condicional!!”", 2000);
+                printPause("Você derrota a segunda onda! +4 conhecimento!", 2000);
+                conhecimento += 4;
+                acertou2 = true;
+            } else {
+                printPause("\nO capanga golpeia sua barra de vida com um 'BUG CRÍTICO'!", 2000);
+
+                int dano = (int) (Math.random() * 4) + 2;
+                vida -= dano;
+                printPause("Você sofreu " + dano + " de dano! Vida atual: " + vida, 2000);
+
+                if (vida <= 0) {
+                    printPause("\nVocê sucumbiu diante dos Capangas Avançados...", 2000);
+                    System.out.println("\n*** GAME OVER ***");
+                    return;
+                }
+
+                System.out.println("\nEles aguardam outra resposta...");
+            }
+        }
         System.out.println("\nCom os capangas derrotados, a floresta se divide em dois caminhos de código brilhante...");
         pausar(2500);
         System.out.println("1 - Caminho da Lógica Clara (seguro, mas simples)");
@@ -254,7 +347,7 @@ if (teste) {
             vida -= 2;
         }
 
-        // ==================== NOVA PARTE: BAÚ DE CÓDIGO ====================
+        // ==================== BAÚ DE CÓDIGO ====================
         System.out.println("\nNo final do caminho, você encontra um misterioso Baú de Código Antigo...");
         pausar(2000);
         System.out.println("Ele emite luzes coloridas... deseja abri-lo? (s/n)");
@@ -295,50 +388,126 @@ if (teste) {
     private void capitulo2() {
         printPause("\n=== CAPÍTULO 2 – O DESAFIO LÓGICO DOS PORTAIS ===", 2000);
         printPause("Após atravessar as ruínas do Templo Switch, você encontra uma parede de código enigmática...", 2500);
-        System.out.println("Nela, uma voz digital ecoa:");
-        printPause("\"Apenas quem entende a lógica poderá escolher o portal certo.\"", 2500);
+        System.out.println("A voz digital ecoa:");
+        printPause("\"Apenas quem domina a lógica poderá escolher o portal correto.\"", 2000);
 
-        printPause("\nAparece a pergunta na tela:", 1500);
-        System.out.println("Se uma variável 'x' vale 10 e 'y' vale 5, o que o seguinte código imprime?");
-        System.out.println("\nif (x > y && y * 2 == x)");
-        System.out.println("    System.out.println(\"A\");");
-        System.out.println("else if (x == y)");
-        System.out.println("    System.out.println(\"B\");");
-        System.out.println("else");
-        System.out.println("    System.out.println(\"C\");");
-        System.out.print("\nQual letra será exibida? ");
-        String resposta = sc.next().toUpperCase();
+        // Lista expandida de perguntas
+        ArrayList<Pergunta> perguntas = new ArrayList<>();
+
+        perguntas.add(new Pergunta(
+                """
+                int x = 10, y = 5;
+                if (x > y && y * 2 == x)
+                    System.out.println("A");
+                else if (x == y)
+                    System.out.println("B");
+                else
+                    System.out.println("C");
+                """,
+                "O que será impresso?",
+                new String[]{"a) A", "b) B", "c) C"},
+                "a"
+        ));
+
+        perguntas.add(new Pergunta(
+                """
+                int a = 3, b = 7;
+                if (a + b > 10)
+                    System.out.println("OK");
+                else
+                    System.out.println("NOK");
+                """,
+                "Qual a saída?",
+                new String[]{"a) OK", "b) NOK", "c) Nenhuma"},
+                "a"
+        ));
+
+        perguntas.add(new Pergunta(
+                """
+                int n = 4;
+                if (n % 2 == 0)
+                    if (n > 10)
+                        System.out.println("X");
+                    else
+                        System.out.println("Y");
+                """,
+                "O que será impresso?",
+                new String[]{"a) X", "b) Y", "c) Nada"},
+                "b"
+        ));
+
+        perguntas.add(new Pergunta(
+                """
+                int x = 5;
+                if (x == 10)
+                    System.out.println("Igual");
+                else
+                    System.out.println("Diferente");
+                """,
+                "Qual saída?",
+                new String[]{"a) Igual", "b) Diferente", "c) Erro"},
+                "b"
+        ));
+
+        perguntas.add(new Pergunta(
+                """
+                int z = 8;
+                if (z > 2 && z < 10)
+                    System.out.println("Intervalo");
+                else
+                    System.out.println("Fora");
+                """,
+                "O que será exibido?",
+                new String[]{"a) Intervalo", "b) Fora", "c) Nada"},
+                "a"
+        ));
+
+        // Escolhe pergunta aleatória
+        Random rnd = new Random();
+        Pergunta q = perguntas.get(rnd.nextInt(perguntas.size()));
+
+        printPause("\nAparece na pedra brilhante o seguinte código:", 1500);
+        System.out.println(q.codigo);
+
+        printPause("\nPergunta: " + q.enunciado, 1500);
+        for (String alt : q.alternativas) System.out.println(alt);
+
+        System.out.print("\nSua resposta: ");
+        String resposta = sc.next().toLowerCase();
 
         switch (resposta) {
-            case "A":
-                printPause("\nO portal da Luz se abre diante de você!", 1500);
-                System.out.println("Um robô chamado Byte surge e se junta a você, oferecendo dicas em batalha!");
-                conhecimento += 3;
-                break;
-            case "B":
-                printPause("\nSua resposta ativa o portal da Sombra...", 2000);
-                System.out.println("Você sente um poder sombrio fluir, mas o código ao redor começa a se distorcer!");
-                int dano = (int) (Math.random() * 3) + 1;
-                vida -= dano;
-                conhecimento += 2;
-                System.out.println("Você ganhou +2 de conhecimento, mas perdeu " + dano + " de vida!");
-                break;
-            case "C":
-                printPause("\nO portal do Eco ressoa com sua resposta...", 2000);
-                System.out.println("Um som distante revela um atalho secreto para o castelo do Rei dos Bugs!");
+            case "a":
+                printPause("\nO PORTAL AZUL BRILHA AO SEU REDOR!", 1500);
+                printPause("Um espírito-guia chamado Byte++ aparece e concede +4 conhecimento!", 2000);
                 conhecimento += 4;
                 break;
+
+            case "b":
+                printPause("\nO PORTAL VERMELHO SE ABRE...", 1500);
+                printPause("Uma rajada de calor te atinge — você ganha +2 conhecimento, mas perde vida!", 2000);
+                int dano = rnd.nextInt(3) + 2;
+                vida -= dano;
+                conhecimento += 2;
+                System.out.println("Você perdeu " + dano + " de vida.");
+                break;
+
+            case "c":
+                printPause("\nO PORTAL CINZA TREME...", 1500);
+                printPause("Ele te leva por um atalho perigoso, mas revelador. +5 conhecimento!", 2000);
+                conhecimento += 5;
+                break;
+
             default:
-                printPause("\nO portal vibra violentamente!", 1500);
-                printPause("O chão se abre e o sistema entra em colapso!", 2000);
-                System.out.println("Você é lançado de volta ao início do jogo com uma mensagem piscando:");
-                System.out.println("\"Nem todo caminho é seguro quando o caso é errado.\"");
+                printPause("\nO código colapsa!", 1500);
+                printPause("Você ativou um 'case default' inesperado!", 2000);
                 vida = 0;
+                System.out.println("*** GAME OVER ***");
                 return;
         }
 
         verificarVida();
         mostrarStatus();
+
         System.out.println("\n--- Fim do Capítulo 2 ---");
         System.out.println("[Pressione ENTER para continuar]");
         sc.nextLine();
@@ -362,10 +531,10 @@ if (teste) {
 
     // ==================== CAPÍTULO 3 ====================
     private void capitulo3() {
-        printPause("\n=== CAPÍTULO 3 – O CÓDIGO PERDIDO ===", 2000);
+        printPause("\n=== CAPÍTULO 3 – O CÓDIGO PERDIDO (EXPANDIDO) ===", 2000);
         System.out.println("Você acessa o terminal antigo e vê uma mensagem piscando:");
         System.out.println("\"Arquivo perdido: Source_Origin.sys.\"");
-        printPause("Um fragmento de código aparece — resolveu-se em enigmas. Resolva para recuperar pedaços do arquivo.", 2000);
+        printPause("Fragmentos de código aparecem — resolva os enigmas para recuperar o arquivo.", 1500);
 
         ArrayList<Pergunta> perguntas = new ArrayList<>();
 
@@ -425,13 +594,104 @@ if (teste) {
                 "b"
         ));
 
-        // sorteia uma pergunta aleatória
+        perguntas.add(new Pergunta(
+                """
+                        int i = 0;
+                        if (i > 0)
+                            System.out.println("Positivo");
+                        else if (i == 0)
+                            System.out.println("Zero");
+                        else
+                            System.out.println("Negativo");
+                        """,
+                "O que será impresso?",
+                new String[]{
+                        "a) Positivo",
+                        "b) Zero",
+                        "c) Negativo"
+                },
+                "b"
+        ));
+
+        perguntas.add(new Pergunta(
+                """
+                        boolean t = true;
+                        boolean f = false;
+                        if (t && !f)
+                            System.out.println("OK");
+                        else
+                            System.out.println("NO");
+                        """,
+                "Qual saída?",
+                new String[]{
+                        "a) OK",
+                        "b) NO",
+                        "c) Erro"
+                },
+                "a"
+        ));
+
+        perguntas.add(new Pergunta(
+                """
+                        int x = 2;
+                        if (x > 1)
+                            System.out.println("Maior");
+                        if (x > 2)
+                            System.out.println("Muito Maior");
+                        """,
+                "O que será impresso?",
+                new String[]{
+                        "a) Maior",
+                        "b) Maior e Muito Maior",
+                        "c) Nada"
+                },
+                "a"
+        ));
+
+        perguntas.add(new Pergunta(
+                """
+                        int a = 1, b = 2, c = 3;
+                        if (a + b == c)
+                            System.out.println("Igual");
+                        else
+                            System.out.println("Diferente");
+                        """,
+                "Qual será impresso?",
+                new String[]{
+                        "a) Igual",
+                        "b) Diferente",
+                        "c) Erro"
+                },
+                "a"
+        ));
+
+        perguntas.add(new Pergunta(
+                """
+                        int m = 9;
+                        if (m % 3 == 0)
+                            if (m % 2 == 0)
+                                System.out.println("Divisível por 6");
+                            else
+                                System.out.println("Divisível por 3");
+                        else
+                            System.out.println("Não divisível por 3");
+                        """,
+                "Qual será a saída?",
+                new String[]{
+                        "a) Divisível por 6",
+                        "b) Divisível por 3",
+                        "c) Não divisível por 3"
+                },
+                "b"
+        ));
+
+        // Sorteia uma pergunta aleatória do conjunto
         Random rnd = new Random();
         Pergunta q = perguntas.get(rnd.nextInt(perguntas.size()));
 
         printPause("\nO terminal exibe o seguinte código:", 1200);
         System.out.println(q.codigo);
-        printPause("", 1500);
+        printPause("", 800);
 
         System.out.println("\nPergunta: " + q.enunciado);
         for (String alt : q.alternativas) System.out.println(alt);
@@ -442,9 +702,7 @@ if (teste) {
         while (!acertou && vida > 0) {
             System.out.print("\n➡ Sua resposta (a/b/c): ");
             String resposta = sc.nextLine().trim().toLowerCase();
-            if (resposta.isEmpty()) { // caso algum newline pendente
-                resposta = sc.nextLine().trim().toLowerCase();
-            }
+            if (resposta.isEmpty()) resposta = sc.nextLine().trim().toLowerCase();
 
             if (!resposta.equals("a") && !resposta.equals("b") && !resposta.equals("c")) {
                 System.out.println("Resposta inválida. Digite 'a', 'b' ou 'c'.");
@@ -452,16 +710,16 @@ if (teste) {
             }
 
             if (resposta.equals(q.correta)) {
-                printPause("\nO código se recompila com sucesso! Você recupera fragmentos do arquivo.", 1400);
+                printPause("\nO código se recompila com sucesso! Você recupera fragmentos do arquivo.", 900);
                 conhecimento += 4;
                 acertou = true;
             } else {
                 errosSeguidos++;
-                int dano = (int) (Math.random() * 4) + 2; // dano mais alto por ser capítulo mais difícil
+                int dano = (int) (Math.random() * 4) + 2; // dano alto por ser capítulo importante
                 vida -= dano;
                 System.out.println("\nResposta incorreta. O terminal faz curto e você é ferido pela sobrecarga.");
                 System.out.println("Você sofreu " + dano + " de dano. Vida atual: " + vida);
-                printPause("", 1200);
+                pausar(800);
 
                 if (vida <= 0) {
                     System.out.println("\nO sistema entra em colapso... *** GAME OVER ***");
@@ -485,11 +743,11 @@ if (teste) {
         sc.nextLine();
     }
 
-    // ==================== CAPÍTULO 4 ====================
+    // ==================== CAPÍTULO 4 (EXPANDIDO - 10 perguntas, melhor de 3) ====================
     private void capitulo4() {
-        printPause("\n=== CAPÍTULO 4 – A CÓPIA CORROMPIDA ===", 2000);
-        printPause("No Setor de Memória Profunda, você encara uma cópia defeituosa de si mesmo...", 2000);
-        printPause("A cópia propõe uma disputa de lógica: melhor de três. Apenas o dev com raciocínio impecável vencerá.", 2000);
+        printPause("\n=== CAPÍTULO 4 – A CÓPIA CORROMPIDA", 2000);
+        printPause("No Setor de Memória Profunda, você encara uma cópia defeituosa de si mesmo...", 1500);
+        printPause("A cópia propõe uma disputa de lógica: melhor de três. Apenas o dev com raciocínio impecável vencerá.", 1500);
 
         ArrayList<Pergunta> perguntas = new ArrayList<>();
 
@@ -497,7 +755,7 @@ if (teste) {
                 """
                         int vida = 10;
                         int defesa = 5;
-                        
+    
                         if (vida > 0)
                             if (defesa > 10)
                                 System.out.println("Protegido!");
@@ -517,7 +775,7 @@ if (teste) {
                 """
                         int energia = 5;
                         int modoFuria = 3;
-                        
+    
                         if (energia > 4 || modoFuria > 5)
                             System.out.println("Ataque liberado!");
                         else
@@ -535,7 +793,7 @@ if (teste) {
         perguntas.add(new Pergunta(
                 """
                         int codigo = 42;
-                        
+    
                         if (codigo < 20)
                             System.out.println("Código Fraco");
                         else if (codigo < 40)
@@ -591,22 +849,108 @@ if (teste) {
                 "c"
         ));
 
-        // ===== Sistema de melhor de 3 =====
-        Random rnd = new Random();
-        int acertos = 0;
-        int erros = 0;
+        // Novas perguntas adicionadas (5 -> 10)
+        perguntas.add(new Pergunta(
+                """
+                        int p = 0;
+                        if (p != 0)
+                            System.out.println("Não zero");
+                        else
+                            System.out.println("Zero");
+                        """,
+                "O que será impresso?",
+                new String[]{
+                        "a) Não zero",
+                        "b) Zero",
+                        "c) Erro"
+                },
+                "b"
+        ));
 
-        // Seleciona 3 perguntas aleatórias sem repetir
+        perguntas.add(new Pergunta(
+                """
+                        int r = 4;
+                        if (r > 2 && (r % 2) == 0)
+                            System.out.println("Par e grande");
+                        else
+                            System.out.println("Outro");
+                        """,
+                "Qual saída?",
+                new String[]{
+                        "a) Par e grande",
+                        "b) Outro",
+                        "c) Nada"
+                },
+                "a"
+        ));
+
+        perguntas.add(new Pergunta(
+                """
+                        boolean x = false;
+                        if (!x)
+                            System.out.println("Negado");
+                        else
+                            System.out.println("Afirma");
+                        """,
+                "O que será exibido?",
+                new String[]{
+                        "a) Negado",
+                        "b) Afirma",
+                        "c) Erro"
+                },
+                "a"
+        ));
+
+        perguntas.add(new Pergunta(
+                """
+                        int t = 1;
+                        if (t > 0)
+                            System.out.println(\"Positivo\");
+                        else
+                            System.out.println(\"Não positivo\");
+                        """,
+                "Qual saída?",
+                new String[]{
+                        "a) Positivo",
+                        "b) Não positivo",
+                        "c) Nada"
+                },
+                "a"
+        ));
+
+        perguntas.add(new Pergunta(
+                """
+                        int s = 6;
+                        if (s < 5)
+                            System.out.println(\"Pequeno\");
+                        else if (s == 6)
+                            System.out.println(\"Seis\");
+                        else
+                            System.out.println(\"Grande\");
+                        """,
+                "Qual será impresso?",
+                new String[]{
+                        "a) Pequeno",
+                        "b) Seis",
+                        "c) Grande"
+                },
+                "b"
+        ));
+
+        // Shuffle e seleciona 3 sem repetir
         Collections.shuffle(perguntas);
         List<Pergunta> selecionadas = perguntas.subList(0, 3);
+
+        int acertos = 0;
+        int erros = 0;
 
         for (int i = 0; i < 3 && vida > 0; i++) {
             Pergunta q = selecionadas.get(i);
 
             System.out.println("\n--- Rodada " + (i + 1) + " ---");
-            printPause("A cópia te desafia com o seguinte código:", 1200);
+            printPause("A cópia te desafia com o seguinte código:", 600);
             System.out.println(q.codigo);
-            printPause("", 1500);
+            printPause("", 400);
 
             System.out.println("\nPergunta: " + q.enunciado);
             for (String alt : q.alternativas) System.out.println(alt);
@@ -631,13 +975,11 @@ if (teste) {
                 System.out.println("\nErrado! A cópia distorce a realidade e te fere com lógica invertida.");
                 System.out.println("Você sofreu " + dano + " de dano. Vida atual: " + vida);
                 erros++;
-
                 verificarVida();
             }
 
-            // condição de vitória ou derrota antecipada
-            if (acertos == 2) break; // já ganhou
-            if (erros == 2) break;   // já perdeu
+            if (acertos == 2) break;
+            if (erros == 2) break;
         }
 
         System.out.println("\n===============================");
