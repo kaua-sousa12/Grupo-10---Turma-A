@@ -1,4 +1,6 @@
 import java.util.*;
+// Kauã Sousa Silva
+// João Pedro Gama
 
 public class RPG {
     Scanner sc = new Scanner(System.in);
@@ -60,7 +62,7 @@ public class RPG {
 
     public void creditos() {
         System.out.println("\n=== CRÉDITOS ===");
-        System.out.println("Desenvolvido por: Kauã, João e Denner");
+        System.out.println("Desenvolvido por: Kauã Sousa Silva, João Pedro Gama e Denner dos Anjos Labela");
         System.out.println("Disciplina: Algoritmos e Programação");
         System.out.println("Tema: RPG Educativo - Aprendendo If/Else");
     }
@@ -85,8 +87,6 @@ public class RPG {
         System.out.println("Conhecimento: " + conhecimento);
         pausar(1500);
 
-        capitulo1();
-
         if (vida <= 0) return;
         capitulo2();
 
@@ -107,6 +107,11 @@ public class RPG {
 
         capitulo8();
         if(vida <= 0) return;
+
+        capitulo9();
+        if(vida <= 0) return;
+
+        capitulo10();
     }
 
     private void verificarVida() {
@@ -401,14 +406,14 @@ if (!ativo) {
 
         perguntas.add(new Pergunta(
                 """
-                int x = 10, y = 5;
-                if (x > y && y * 2 == x)
-                    System.out.println("A");
-                else if (x == y)
-                    System.out.println("B");
-                else
-                    System.out.println("C");
-                """,
+                        int x = 10, y = 5;
+                        if (x > y && y * 2 == x)
+                            System.out.println("A");
+                        else if (x == y)
+                            System.out.println("B");
+                        else
+                            System.out.println("C");
+                        """,
                 "O que será impresso?",
                 new String[]{"a) A", "b) B", "c) C"},
                 "a"
@@ -416,12 +421,12 @@ if (!ativo) {
 
         perguntas.add(new Pergunta(
                 """
-                int a = 3, b = 7;
-                if (a + b > 10)
-                    System.out.println("OK");
-                else
-                    System.out.println("NOK");
-                """,
+                        int a = 3, b = 7;
+                        if (a + b > 10)
+                            System.out.println("OK");
+                        else
+                            System.out.println("NOK");
+                        """,
                 "Qual a saída?",
                 new String[]{"a) OK", "b) NOK", "c) Nenhuma"},
                 "a"
@@ -429,13 +434,13 @@ if (!ativo) {
 
         perguntas.add(new Pergunta(
                 """
-                int n = 4;
-                if (n % 2 == 0)
-                    if (n > 10)
-                        System.out.println("X");
-                    else
-                        System.out.println("Y");
-                """,
+                        int n = 4;
+                        if (n % 2 == 0)
+                            if (n > 10)
+                                System.out.println("X");
+                            else
+                                System.out.println("Y");
+                        """,
                 "O que será impresso?",
                 new String[]{"a) X", "b) Y", "c) Nada"},
                 "b"
@@ -443,12 +448,12 @@ if (!ativo) {
 
         perguntas.add(new Pergunta(
                 """
-                int x = 5;
-                if (x == 10)
-                    System.out.println("Igual");
-                else
-                    System.out.println("Diferente");
-                """,
+                        int x = 5;
+                        if (x == 10)
+                            System.out.println("Igual");
+                        else
+                            System.out.println("Diferente");
+                        """,
                 "Qual saída?",
                 new String[]{"a) Igual", "b) Diferente", "c) Erro"},
                 "b"
@@ -456,12 +461,12 @@ if (!ativo) {
 
         perguntas.add(new Pergunta(
                 """
-                int z = 8;
-                if (z > 2 && z < 10)
-                    System.out.println("Intervalo");
-                else
-                    System.out.println("Fora");
-                """,
+                        int z = 8;
+                        if (z > 2 && z < 10)
+                            System.out.println("Intervalo");
+                        else
+                            System.out.println("Fora");
+                        """,
                 "O que será exibido?",
                 new String[]{"a) Intervalo", "b) Fora", "c) Nada"},
                 "a"
@@ -487,7 +492,7 @@ if (!ativo) {
                 conhecimento += 4;
                 break;
 
-            case "b":
+            case "c":
                 printPause("\nO PORTAL VERMELHO SE ABRE...", 1500);
                 printPause("Uma rajada de calor te atinge — você ganha +2 conhecimento, mas perde vida!", 2000);
                 int dano = rnd.nextInt(3) + 2;
@@ -496,7 +501,7 @@ if (!ativo) {
                 System.out.println("Você perdeu " + dano + " de vida.");
                 break;
 
-            case "c":
+            case "b":
                 printPause("\nO PORTAL CINZA TREME...", 1500);
                 printPause("Ele te leva por um atalho perigoso, mas revelador. +5 conhecimento!", 2000);
                 conhecimento += 5;
@@ -536,7 +541,7 @@ if (!ativo) {
 
     // ==================== CAPÍTULO 3 ====================
     private void capitulo3() {
-        printPause("\n=== CAPÍTULO 3 – O CÓDIGO PERDIDO (EXPANDIDO) ===", 2000);
+        printPause("\n=== CAPÍTULO 3 – O CÓDIGO PERDIDO ===", 2000);
         System.out.println("Você acessa o terminal antigo e vê uma mensagem piscando:");
         System.out.println("\"Arquivo perdido: Source_Origin.sys.\"");
         printPause("Fragmentos de código aparecem — resolva os enigmas para recuperar o arquivo.", 1500);
@@ -748,7 +753,7 @@ if (!ativo) {
         sc.nextLine();
     }
 
-    // ==================== CAPÍTULO 4 (EXPANDIDO - 10 perguntas, melhor de 3) ====================
+    // ==================== CAPÍTULO 4  ====================
     private void capitulo4() {
         printPause("\n=== CAPÍTULO 4 – A CÓPIA CORROMPIDA", 2000);
         printPause("No Setor de Memória Profunda, você encara uma cópia defeituosa de si mesmo...", 1500);
@@ -760,7 +765,7 @@ if (!ativo) {
                 """
                         int vida = 10;
                         int defesa = 5;
-    
+                        
                         if (vida > 0)
                             if (defesa > 10)
                                 System.out.println("Protegido!");
@@ -780,7 +785,7 @@ if (!ativo) {
                 """
                         int energia = 5;
                         int modoFuria = 3;
-    
+                        
                         if (energia > 4 || modoFuria > 5)
                             System.out.println("Ataque liberado!");
                         else
@@ -798,7 +803,7 @@ if (!ativo) {
         perguntas.add(new Pergunta(
                 """
                         int codigo = 42;
-    
+                        
                         if (codigo < 20)
                             System.out.println("Código Fraco");
                         else if (codigo < 40)
@@ -851,10 +856,9 @@ if (!ativo) {
                         "b) Igualdade",
                         "c) Falso"
                 },
-                "c"
+                "b"
         ));
 
-        // Novas perguntas adicionadas (5 -> 10)
         perguntas.add(new Pergunta(
                 """
                         int p = 0;
@@ -942,7 +946,6 @@ if (!ativo) {
                 "b"
         ));
 
-        // Shuffle e seleciona 3 sem repetir
         Collections.shuffle(perguntas);
         List<Pergunta> selecionadas = perguntas.subList(0, 3);
 
@@ -1283,10 +1286,10 @@ System.out.println(c);
 
         mostrarStatus();
         printPause("\n--- Fim do Capítulo 7 ---", 2000);
-        sc.nextLine(); sc.nextLine();
+        sc.nextLine();
+        sc.nextLine();
     }
 
-    // ==================== CAPÍTULO 8 ====================
     private void capitulo8() {
         printPause("\n=== CAPÍTULO 8 – O SERVIDOR FANTASMA ===", 2000);
         printPause("Você entra nos confins abandonados de System32…", 2200);
@@ -1295,7 +1298,6 @@ System.out.println(c);
         printPause("Clippy.exe aparece flutuando no ar:", 2000);
         printPause("“Você é o cavaleiro que pode restaurar o sistema.”", 2500);
 
-        // -------- PRIMEIRA ONDA --------
         ArrayList<String[]> perguntas = new ArrayList<>();
 
         perguntas.add(new String[]{
@@ -1461,6 +1463,596 @@ System.out.println(n);
 
         mostrarStatus();
         printPause("\n--- Fim do Capítulo 8 ---", 2000);
-        sc.nextLine(); sc.nextLine();
+        sc.nextLine();
+        sc.nextLine();
+    }
+
+    private void mostrarReiDosBugs() {
+        String CYAN = "\u001B[36m";
+        String RESET = "\u001B[0m";
+
+        System.out.println(CYAN + "                             *           #                                                 \n" +
+                "                                      *#*+       #*                                                 \n" +
+                "                                       *#+*      #*+                                                \n" +
+                "                                       #*=*       ##++++=                                           \n" +
+                "                                      ##=+*          ***++   -                                      \n" +
+                "                                    ##*=+              *++*+ ++                                     \n" +
+                "                              #   ##*+**             * #*++**+*                                     \n" +
+                "                             %#   #*+*+ *#####***###**##*+#***                                      \n" +
+                "                             #*** %#*##%%#########**#%##*+#**                                       \n" +
+                "                              ###**+*#**++#*#%%#####%%%#***                                         \n" +
+                "                                ####**#*+*#######%%%%%%%##                                          \n" +
+                "                                  #%%%##%#######%%%%%#***#                                          \n" +
+                "                                 +#%%%%%%%#######**#***#+*                                          \n" +
+                "                                 #%%%%%%#####*++*####*+*#*                                          \n" +
+                "                                 #%%#%#####%##**###%##*==##                                         \n" +
+                "                                 %%#%#####%%*+*######**+*#*#                                        \n" +
+                "                                 %#%#####@@%%%%##*****#*@%##                                        \n" +
+                "                                 ######%%@@@%%%%%***#%%#@@#**#                                      \n" +
+                "                                ##%####%%@@@@%%#%%%%%%%#@@%#*####                                   \n" +
+                "                                ##%###%%#%@@@%%%##*##*##@@%#**##*##*                                \n" +
+                "                         #*#%%%%#%####%%%#%@@@@@@%%**###@%##**#***+#+                               \n" +
+                "                         %%%%%%%#####%######%%%@@@@@@@@%%###*###*******                             \n" +
+                "                      #%%%%%%%%%%%%%%############%%@@%%%%%%%%##*++++****                            \n" +
+                "                    ##%%%%#%%%%%%%%%%%%%%%%%%%%%%%#%%%%%%%%%%#****+++*##*                           \n" +
+                "                   #%%%%%%%#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%##%##******#####                          \n" +
+                "                *%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#*###***#*#######                         \n" +
+                "                +%%%%%%%%%%%%%%%%%%%%##%%%%%%%%%%%%%%%%%%####%%%##%#%%##%%%=                        \n" +
+                "                 #%%%%%%%%%%%%%%%#%%*%%%#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#                       \n" +
+                "                  %%%%%%%%%%%%%##%#+#%%%*%##%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#                       \n" +
+                "                  #%%%%%%%%%%%%#%#+#%%%#*%%*##%%%%%%%%%%%%%%%%%%%%%##%%%%%##                        \n" +
+                "                 %%%%%%%%%%%%%%*%%*#%%%**%%***%%%%%%%%%%%%#%%#####%##%%%%%#                         \n" +
+                "                *%%%%%%%%%%%%%%*#%**%%%*#%%#++%%%%%%%#%##########*##*#%%%#                          \n" +
+                "                #%%%%%%%%%%#%%##*%#**%#+#%%*++%%%%%###%%####%####*###*##                            \n" +
+                "                 %%%%%%%%%######%%%###%##%%##%%%%%###############*###**                             \n" +
+                "                  #%%%%%%##%%####%##*#****#%%%%%%%%##############*####*#                            \n" +
+                "                  #%%%%%#%%######%%#***++*%%%%%%%%%####%#########**##*#*#                           \n" +
+                "                 #%%%%%#%#######%%%##*++#%%%%%%%%################**##*##*                           \n" +
+                "                 %%%%%#########%%%#####%%%%%%%%#%################**######*                          \n" +
+                "                #%%%%%#%%######%######%%#%%%%%%%%################**####*##                          \n" +
+                "               #%%%%%%#########%######%%#%%%%%%#%################**####**##                         \n" +
+                "              #%%%%%%%#########%######%%#%%%%%##%################**######*#=                        \n" +
+                "            #%%%%%%%%%########%######%%##%%%%%#%%################**#########-=                      \n" +
+                "           #%%%%%%%%%%#%######%###%%%%%##%%%%%#%%##############****#########*+   ==  ++= ==+        \n" +
+                "          #%%%%%%%%%%#%%######%##%%%%%%##%%%%%#%%##############*#**##%#*####++   ++  +++*  *+       \n" +
+                "         #%%#%%%%%%#%#%%#%###%%%%%%%%%%##%%%%%#%%##############****##%######+## +++***++   +**      \n" +
+                "         ###%%%%%%%#%##%#####%%%%%%%%%%##%%%%%#%%##############****##%#######*###***+**++ *+**      \n" +
+                "          #%%%%%%%%#%%#%#####%@%%%%%%%%##%%%%%#%###############****######%####*#*+*+**++****        \n" +
+                "        *%%%%%%%%%#%%#######%%%%%%%%%%##%%%%%%%%###############****######%%##%###*##+#** *#         \n" +
+                "       #%%%%%%%%%%%%%######%%%%%%%%%%%##%%%%%%#%###############****##%###%%%%%%##   *##             \n" +
+                "      #%##%%%%%%%#%%%###%##%%%%%%%%%%%#%%%%%%%%%###############**#*######%%%%%%%#                   \n" +
+                "     ##%#%%%%%%%%#%%%#%###%%@%%%%%%%%#%%%%%#%%%%################*#####%##%%%%%%%##                  \n" +
+                "    #%%%%%%%%%%%###%%##%##%%%%%%%%%%%%%%%%%%%#%%################*#####%##%%%%%%%%##                 \n" +
+                "   #%%%%%%#%%%%##%#######%%%%%%%%%%%%%%%%%%%%%%%################**####%###%%%%%%%%#                 \n" +
+                "  #%%%#%%%%%%%%#%%%####%#%%%%%%%%%%%%%%%%%%%%#%%################**####%###%%%%%%%%##                \n" +
+                "  #%%%%%%%#%%%%%%%%%#%##%%%%%%%%%%%%%%%%%%%%%#%%################**########%%%%%%%%%##               \n" +
+                "  ##%##%#%%%%%%#%%%#%###%%%%%%%%%%%%%%%%%%%%%#%%#################**####%###%%%%%%%%%##              \n" +
+                " *#*#%%%#%%%%%%##%%#%##%%%%%%%%%%%%%%%%%%#%%%%%%#################**####%###%%%%%%%%%#*#             \n" +
+                "    #%%%%%%%%%%%%%##%%#%%%%%%%%%%%%%%%%%%%%%%%%%###################%###%%%#%%%%%%%%%%##*     *      \n" +
+                "     #%##%#%%%%%%%##%##%%%%%%%%%%%%%%%%%#%%%%%%########################%%%##%%%%%%%%%%*#######*     \n" +
+                "     #%%#%#%%%%%%%##%#%%%%%%%%%%%%%%%%%%%%%%%%%#####################%##%%###%%%%%%%%%%#*###*####**  \n" +
+                "    *%%%%%%%%%%%%%####%%%%%%%%%%%%%%%%%##%%#%%%####%################%###%##%#%%%%%%%%%%*###**###%#  \n" +
+                "    #%%%%%%%%%%%%##%%#%%%%%%%%%%%%%%%%%%%%%#%%%######################%##%%#%##%%%%%%%%%##%#####%%#  \n" +
+                "    #%%%%%%%%%%%######%%%%%%%%%%%%%%%%%%%%%%%%%####%#################%##%%#%%#%%%%%%%%%%#%%#%###%%# \n" +
+                "     #%%%%%%%%%%%#####%%%%%%%%%%%%%%%%%%%%%%%%%###%%%################%###%%%%%#%%%%%%%%%%#%%%%%#%%%#\n" +
+                "      #%%%%%%%%%######%%%%%%%%%%%%%%%%##%%%%%%%###%%%####################%#%####%%%%%%%%##%%%%%%%%%#\n" +
+                "       %%%%%%%%#%##%##%%%%%%%%%%%%%%%###%%%%%%%###%%%#################%##%%#%###%%%%%%%%%%%%%@@%%%%#\n" +
+                "      #%#%%%%%%%%##%##%%%%%%%%%%%%%%%%#%%%%%%%%%##%%%%###################%%#%%%##%%%%%%%%%#%@@%%%%%#\n" +
+                "         %%%%%%%%#####%%%%%%%%%%%%%%%%%%%%%%%%%##%%%%%####################%%%%%###%%%%%%%%#%@%%%%%% \n" +
+                "         #%%%%%%%%####%%%%%%%%%%%%%%%#%%%%%%%%####%%%%####################%#%#%%###%%%%%%%%##%%%%%  \n" +
+                "          ##%%%%%#####%%%%%%%%%%%%%%##%%%%%%%####%%%%%######################%##%%##%%%%%%%%##%%%    \n" +
+                "            %%%%%%#####%%%%%%%%%%%%%##%%%%%%%###%%%%%%%##############*#####%#%###%##%%%%%%%#*%%%#   \n" +
+                "            %%%%%%%####%%%%%%%%%%%%%#%#%%%%%%###%%%%%%%##############**####%%#%######%%%%%%##       \n" +
+                "            %%%%%%%%####%%%%%%%%%%%####%%%%#%###%%%%%%%##########%####*#####%#########%%%%%%#       \n" +
+                "              %%%%%%%####%%%%%%%%%%###%%%%%#%%##%%%%%%%%#########%#####*####%###%#####%%%%%%%       \n" +
+                "                 %%%%%%%%%%%%%%%%####%%%%%%%####%%%%%%%%%#########%##########%##%%%####%%%%%%*      \n" +
+                "                   #%%%%%%%%%%%%######%%%%%%#####%%%%%%%##########%##########%%###%#####%%%%%       \n" +
+                "                  #%%%%%%%%%%%%%#####%%%%%%%%%##%%%%%%%%##########%%##########%###%######%%%%       \n" +
+                "                  ###%%%%%%%%%%#####%%%%#%%%%%##%%%%%%%%%###########%########*#%%##%%####%%%%       \n" +
+                "                 *##%%%%%%%%%%%#####%%%##%%%%%##%%%%%%%%%###########%#########*#%###%%####%%#       \n" +
+                "                 ##%%%%%%%%%%%#####%%%%#%%%%%%#%%%%%%%%%%%#########%#%#########*#%%##%%%%###*       \n" +
+                "                 #%%%#%%%%%%%%##%#%%%%##%%%%%##%%%%%%%%%%%#########%%%%#########*#%%##%%%##%        \n" +
+                "                #%%%%%%%%%%######%%%%###%%%%%###%%%%%%%%%%##########%#%#############%##%%%%#        \n" +
+                "               ##%%%%%%%%%#%%####%%%###%%%%%%###%%%%%%%%%%##########%##%###########*#%%#%%%         \n" +
+                "              #%%%%%%%%%%%%%%####%%###%%%%%%###%%%%%%%%%%%##########%%##%#############%%#           \n" +
+                "             ###%%%%%%%%%#%####%%%###%%%%%%%###%%%%%%%%%%%%###%######%%##%##########*###%#          \n" +
+                "           ###%%%#%%%%%%#%####%#####%%%%%%%%%##%%%%%%%%%%%%%######%###%###%##############%%         \n" +
+                "         *####%#%%%%%%%%###########%%%%%%%%%%%%%%%%%%%%%%%%%%##%%%%###%###%%################        \n" +
+                "       #####%%#%%##%%%%###########%#%%%##%%%%%%%%%%%%%%%%%%%%%%%%%%%%######%%%######%########*      \n" +
+                "     ####%%%%%##%%#%%######################%%%%%%%%%%%%%%%%%%%%%%%%%%##%####%%%######%#########     \n" +
+                "   ###%#%%%%%%%%%%%%#####%#####################%%%%%%%%%%%%%%%%%%%%%%%%######%%#################+   \n" +
+                "*####%%%##%%####%%#####%####################################%%%%%%%%%%%###%%%%%%%######%##########  \n" +
+                "%%%%#####%#%%%%#%#####%##%%#%################%%############%%%%%%%##%##%%%#%%%##########%%#########*\n" +
+                " #*#%####%#%%%%%%#%#%##%%%%%%%#######################%%%%%%%%%%%%%%%%%%%%#################%#####*#  \n" +
+                "       *   *     *%%%%%%%%%%%%##%%%%%#######################%%%%%%%%%%####################%#        \n" +
+                "                  %%%%%%%%%#%#####%%%%%%%%%%%%%#####%##%%%%%%%%%#%%%%%###################*          \n" +
+                "                                      *#####%%%%%%%%%%%#####%#%%###%%%##############*               \n" +
+                "                                                        ####%%%%%%#%%%%%%%#*+      " + RESET);
+
+    }
+
+    private void capitulo9() {
+
+        printPause("\n=== CAPÍTULO 9 – KERNEL CAÍDO ===", 2000);
+        printPause("O Núcleo Instável treme enquanto você se aproxima…", 2000);
+        printPause("Uma figura distorcida feita de bytes quebrados surge:", 2000);
+        printPause("\"EU SOU O KERNEL CAÍDO… RESPONDA, HUMANO.\"", 2000);
+
+        ArrayList<String[]> perguntas = new ArrayList<>();
+
+        perguntas.add(new String[]{
+                """
+int a = 7, b = 3;
+if (a % 2 == 1 && b + a > 9) {
+    System.out.println("X");
+} else if (a > 5 || b == 3) {
+    System.out.println("Y");
+} else {
+    System.out.println("Z");
+}
+""",
+                "A) X", "B) Y", "C) Z", "D) Nada será impresso",
+                "B" // resposta correta
+        });
+
+        perguntas.add(new String[]{
+                """
+boolean x = true;
+boolean y = false;
+if ((x && !y) || (y && !x)) {
+    System.out.println("A");
+} else {
+    System.out.println("B");
+}
+""",
+                "A) A", "B) B", "C) Erro", "D) Não imprime nada",
+                "A"
+        });
+
+        perguntas.add(new String[]{
+                """
+int n = 12;
+if (n % 3 == 0 && n % 4 == 0) {
+    System.out.println("OK");
+} else if (n % 2 == 0) {
+    System.out.println("Talvez");
+} else {
+    System.out.println("Não");
+}
+""",
+                "A) OK", "B) Talvez", "C) Não", "D) Nada",
+                "A"
+        });
+
+        Random r = new Random();
+        int acertos = 0;
+
+        while (acertos < 2) {
+
+            String[] q = perguntas.get(r.nextInt(perguntas.size()));
+
+            printPause("\nKernel Caído revela código corrompido:", 2000);
+            printPause(q[0], 2000);
+
+            System.out.println("Qual é a saída correta?");
+            System.out.println(q[1]);
+            System.out.println(q[2]);
+            System.out.println(q[3]);
+            System.out.println(q[4]);
+
+            boolean respondidoCorreto = false;
+
+            while (!respondidoCorreto) {
+
+                System.out.print("Resposta: ");
+                String resposta = sc.next().toUpperCase();
+
+                if (resposta.equals(q[5])) {
+                    printPause("\nKernel: \"LÓGICA ACEITA…\"", 1500);
+                    acertos++;
+                    respondidoCorreto = true;
+
+                } else {
+                    printPause("\nKernel: \"ERRADO! SUA LÓGICA É FRÁGIL!\"", 1500);
+                    int dano = r.nextInt(3) + 2; // dano entre 2–4
+                    vida -= dano;
+                    printPause("Você sofre " + dano + " de dano! Vida atual: " + vida, 1800);
+
+                    if (vida <= 0) {
+                        printPause("\nVocê cai diante do Kernel Caído…", 2000);
+                        printPause("*** GAME OVER ***", 2000);
+                        System.exit(0);
+                    }
+
+                    printPause("Tente novamente…", 1200);
+                }
+            }
+        }
+
+        printPause("\nO Kernel Caído recua, os bits tremendo ao seu redor…", 2000);
+        printPause("\"VOCÊ… ENTENDEU A LÓGICA PROFUNDA…\"", 2000);
+        printPause("\"SIGA PARA O CASTELO DO REI DOS BUGS…\"", 2000);
+
+        printPause("\nVocê sente o núcleo estabilizar levemente…", 2000);
+
+        conhecimento += 4;
+        printPause("✨ +4 de conhecimento", 1500);
+    }
+
+    private void capitulo10() {
+        printPause("\n=== CAPÍTULO 10 – O DEBUG FINAL ===", 2200);
+        printPause("Você chega ao castelo do Rei dos Bugs…", 2000);
+        printPause("Partes piscam, somem, reaparecem… nada faz sentido.", 2000);
+
+        printPause("\nDeseja abrir a porta?", 2000);
+        System.out.println("1 - Sim");
+        System.out.println("2 - Não");
+
+        System.out.print("\nEscolha: ");
+        int escolha = sc.nextInt();
+
+        if (escolha == 2) {
+            printPause("\nVocê fica parado… mas uma horda de capangas surge!", 2000);
+            printPause("*** GAME OVER ***", 2000);
+            return;
+        }
+
+        printPause("\nVocê tenta abrir a porta…", 2000);
+        printPause("Sua mão atravessa a matéria!", 2000);
+        printPause("Você entra sem dificuldades…", 2000);
+
+        printPause("\nDentro do castelo, objetos surgem e somem…", 2000);
+        printPause("Depois de muito caminhar…", 2000);
+        printPause("Você percebe: está preso em um LABIRINTO!", 2000);
+
+        ArrayList<Pergunta> labirinto = new ArrayList<>();
+
+        labirinto.add(new Pergunta(
+                """
+                        int x = 3;
+                        int y = 2;
+                        while (x < 12) {
+                            x += y;
+                            y++;
+                        }
+                        System.out.println(x + y);
+                        """,
+                "Qual valor é impresso?",
+                new String[]{"a) 13", "b) 17", "c) 22"},
+                "b"
+        ));
+
+        labirinto.add(new Pergunta(
+                """
+                        int a = 1, b = 1, c = 0;
+                        for (int i = 0; i < 5; i++) {
+                            c = a + b;
+                            a = b;
+                            b = c;
+                        }
+                        System.out.println(c);
+                        """,
+                "Valor final de c é:",
+                new String[]{"a) 8", "b) 21", "c) 13"},
+                "c"
+        ));
+
+        labirinto.add(new Pergunta(
+                """
+                        int n = 7;
+                        if (n % 2 == 0) {
+                            n += 10;
+                        } else if (n > 5) {
+                            n += 3;
+                        } else {
+                            n -= 2;
+                        }
+                        System.out.println(n);
+                        """,
+                "Qual a saída?",
+                new String[]{"a) 7", "b) 13", "c) 10"},
+                "c"
+        ));
+
+        labirinto.add(new Pergunta(
+                """
+                        int x = 4;
+                        int y = 6;
+                        if (x > y) {
+                            x *= 2;
+                        } else if (y - x == 2) {
+                            x += y;
+                        } else {
+                            x -= y;
+                        }
+                        System.out.println(x);
+                        """,
+                "Qual o valor impresso?",
+                new String[]{"a) 8", "b) -2", "c) 10"},
+                "c"
+        ));
+
+        Random r = new Random();
+        int sala = 0;
+
+        printPause("\nVocê começa no Labirinto…", 2000);
+
+        while (sala < labirinto.size()) {
+
+            Pergunta p = labirinto.get(sala);
+
+            printPause("\nAs paredes mostram código flutuante:", 2000);
+            printPause(p.codigo, 1500);
+            printPause(p.enunciado, 1000);
+
+            System.out.println();
+            for (String alt : p.alternativas) {
+                System.out.println(alt);
+            }
+
+            System.out.print("\nEscolha (a/b/c): ");
+            String resp = sc.next().toLowerCase();
+
+            if (resp.equals(p.correta)) {
+                printPause("\nA sala se abre… você avança!", 1500);
+                conhecimento += 2;
+                sala++;
+
+            } else {
+                printPause("\nAs paredes giram e esmagam você!!", 1500);
+
+                int dano = r.nextInt(4) + 2;
+                vida -= dano;
+
+                printPause("Você sofreu " + dano + " de dano! Vida atual: " + vida, 1500);
+
+                if (vida <= 0) {
+                    printPause("\n*** GAME OVER ***", 2000);
+                    return;
+                }
+
+                printPause("\nAtordoado, você permanece na mesma sala e tenta novamente...", 1500);
+            }
+        }
+
+        printPause("\nO labirinto se desfaz em pixels…", 2000);
+        printPause("Você chegou ao centro!", 1500);
+
+
+// ==========================
+//      BATALHA FINAL
+// ==========================
+
+        printPause("\nAs Ruínas da Memória RAM tremem…", 2000);
+        printPause("O REI DOS BUGS aparece!", 2000);
+        mostrarReiDosBugs();
+        printPause("\"Eu sou o erro que ignora suas regras!\"", 2500);
+
+        int vidaRei = 45;
+
+        ArrayList<Pergunta> perguntas = new ArrayList<>();
+
+        perguntas.add(new Pergunta(
+                """
+                        int x = 5, y = 10;
+                        if (x * 2 == y) {
+                            y += 5;
+                        } else if (y / 2 == x + 1) {
+                            y -= 3;
+                        } else {
+                            y = x + y;
+                        }
+                        System.out.println(y);
+                        """,
+                "Qual a saída?",
+                new String[]{"a) 12", "b) 15", "c) 5"},
+                "b"
+        ));
+
+        perguntas.add(new Pergunta(  // c = 9 no final
+                """
+                        int a = 3, b = 4, c;
+                        if (b % a == 1) {
+                            c = b + a;
+                            if (c > 6) {
+                                c += 2;
+                            } else {
+                                c -= 1;
+                            }
+                        } else {
+                            c = b * a;
+                        }
+                        System.out.println(c);
+                        """,
+                "Valor impresso:",
+                new String[]{"a) 7", "b) 9", "c) 14"},
+                "b"
+        ));
+
+        perguntas.add(new Pergunta(
+                """
+                        int n = 12;
+                        if (n > 10) {
+                            if (n % 3 == 0) {
+                                n -= 5;
+                            } else {
+                                n += 4;
+                            }
+                        } else {
+                            n *= 2;
+                        }
+                        System.out.println(n);
+                        """,
+                "Saída correta:",
+                new String[]{"a) 7", "b) 16", "c) 24"},
+                "a"
+        ));
+
+        perguntas.add(new Pergunta(
+                """
+                        int x = 2, y = 3;
+                        if (x + y > 4) {
+                            if (y - x == 1) {
+                                x = y * 2;
+                            } else {
+                                x = y + 2;
+                            }
+                        } else {
+                            x = x - 1;
+                        }
+                        System.out.println(x);
+                        """,
+                "Resultado final:",
+                new String[]{"a) 6", "b) 5", "c) 2"},
+                "a"
+        ));
+
+        perguntas.add(new Pergunta(
+                """
+                        int n = 9, m = 2;
+                        if (n % 2 != 0) {
+                            n -= m;
+                            if (n % 3 == 0) {
+                                m = n / 3;
+                            } else {
+                                m = n * 2;
+                            }
+                        } else {
+                            n = m * 4;
+                        }
+                        System.out.println(m);
+                        """,
+                "Qual o resultado?",
+                new String[]{"a) 2", "b) 3", "c) 14"},
+                "c"
+        ));
+
+        perguntas.add(new Pergunta(
+                """
+                        int a = 4, b = 6, c = 10;
+                        if (c - b > a) {
+                            c /= 2;
+                            if (c == 5) {
+                                a = c + b;
+                            }
+                        } else {
+                            b = a + c;
+                        }
+                        System.out.println(a);
+                        """,
+                "Valor final de a:",
+                new String[]{"a) 10", "b) 4", "c) 5"},
+                "b"
+        ));
+
+        perguntas.add(new Pergunta(
+                """
+                        int a = 8, b = 3, c = 2;
+                        if (a % b == 2) {
+                            a -= c;
+                            if (a > 5) {
+                                b += a;
+                            } else {
+                                b -= a;
+                            }
+                        } else {
+                            c = a + b;
+                        }
+                        System.out.println(b);
+                        """,
+                "Qual o valor impresso?",
+                new String[]{"a) 11", "b) 9", "c) 6"},
+                "a"
+        ));
+
+
+        int indexPergunta = 0;
+
+        while (vida > 0 && vidaRei > 0) {
+            Pergunta p = perguntas.get(indexPergunta);
+
+            printPause("\n======== BATALHA FINAL ========", 1000);
+            System.out.println("Sua vida: " + vida);
+            System.out.println("Vida do Rei: " + vidaRei);
+
+            printPause("\nO Rei dos Bugs distorce o código:", 1500);
+            printPause(p.codigo, 1500);
+            printPause(p.enunciado, 1000);
+
+            System.out.println();
+            for (String alt : p.alternativas) {
+                System.out.println(alt);
+            }
+
+            System.out.print("\nEscolha (a/b/c): ");
+            String resp = sc.next().toLowerCase();
+
+            int danoInimigo = r.nextInt(5) + 3;
+
+            if (resp.equals(p.correta)) {
+                int dano = r.nextInt(6) + 4;
+                printPause("\nVocê decifra a condição perfeita!", 1500);
+                printPause("Você causou " + dano + " de dano!", 1500);
+
+                vidaRei -= dano;
+                conhecimento += 4;
+
+                // avança para a próxima pergunta
+                indexPergunta++;
+
+                if (indexPergunta >= perguntas.size()) {
+                    indexPergunta = 0;
+                }
+
+            } else {
+                printPause("\nSua lógica falha! O Rei te golpeia!", 1500);
+                vida -= danoInimigo;
+
+                printPause("Você sofreu " + danoInimigo + " de dano! Vida atual: " + vida, 1500);
+
+                if (vida <= 0) {
+                    final3();
+                    return;
+                }
+            }
+        }
+
+        if (vidaRei <= 0) {
+
+            if (conhecimento >= 40) {
+                final1();
+            } else {
+                final2();
+            }
+
+        } else if (vida <= 0) {
+            final3();
+        }
+    }
+
+    //  FINAIS
+    private void final1() {
+        printPause("\n=== FINAL 1 – LÓGICA RESTAURADA ===", 2000);
+        printPause("Você reescreve o código do Rei…", 2000);
+        printPause("Ele se transforma em um PROTETOR DO SISTEMA.", 2000);
+        printPause("System32 renasce. Você retorna ao mundo real.", 2500);
+        printPause("\nArquivo criado: System32_Reboot.txt", 2000);
+        printPause("\"A lógica é o poder. Mas o poder depende da escolha.\"", 2500);
+    }
+
+    private void final2() {
+        printPause("\n=== FINAL 2 – ORDEM FORÇADA ===", 2000);
+        printPause("Você aprisiona o Rei em um loop eterno…", 2000);
+        printPause("System32 volta, mas frio e previsível.", 2000);
+        printPause("sem espaço para criatividade…", 2000);
+        printPause("\nArquivo criado: System32_Reboot.txt", 2000);
+    }
+
+    private void final3() {
+        printPause("\n=== FINAL RUIM – O ERRO VENCEU ===", 2000);
+        printPause("O Rei corrompe seu código…", 2000);
+        printPause("Sua tela fica vermelha…", 2000);
+        printPause("\"Você falhou. O erro venceu.\"", 2500);
+        printPause("Você é expulso do sistema.", 2500);
     }
 }

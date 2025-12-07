@@ -1,4 +1,6 @@
 public class Programa {
+    // Kauã Sousa Silva
+    // João Pedro Gama
     public static void main(String[] args) {
         RPG jogo = new RPG();
 
