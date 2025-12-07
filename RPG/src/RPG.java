@@ -87,6 +87,8 @@ public class RPG {
         System.out.println("Conhecimento: " + conhecimento);
         pausar(1500);
 
+        capitulo1();
+
         if (vida <= 0) return;
         capitulo2();
 
